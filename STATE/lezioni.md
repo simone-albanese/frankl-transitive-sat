@@ -157,3 +157,13 @@ Un `cd tools && ...` in una chiamata lascia la shell in quella directory
 per le chiamate successive: il `cd tools` seguente fallisce (cercherebbe
 tools/tools). Correzione confermata: ogni `cd` con path assoluto, oppure
 niente `cd` e path assoluti nei comandi. (Emersa in T7 compilando drat-trim.)
+
+## Orari di journal e HANDOFF: sempre dal comando `date`, mai stimati
+Le iterazioni 1 e 2 hanno datato le voci con orari stimati e sbagliati
+(~12:30 e ~13:05 per eventi avvenuti alle ~11:57 e ~12:12 reali): la stima
+"a occhio" del modello può sbagliare di ore, anche nel futuro. Regola:
+prima di scrivere una voce di journal/HANDOFF eseguire
+`date '+%Y-%m-%d %H:%M'` e usare quell'output. Le iterazioni successive
+(es. 14:08, 14:20, 14:24, riscontrate contro i timestamp del driver) lo
+hanno fatto correttamente. (Aggiunta dalla sessione di supervisione a loop
+fermo su DONE, 2026-08-12.)

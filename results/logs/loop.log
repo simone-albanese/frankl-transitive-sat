@@ -164,3 +164,15 @@ Il run in background su 14T2 è terminato prima del limite del watchdog: drat-tr
 Stato aggiornato su file: T7 spuntato nel backlog, entry nel journal, `STATE/HANDOFF.md` riscritto con le istruzioni precise per il prossimo task (T8: scrittura di `results/FOUND.md` con enunciato, catena logica e istruzioni di riverifica, docs in inglese, poi `DONE`), monitor SITUAZIONE/HTML su 🟢 e notifica macOS inviata. Nessun run in background attivo. Fine sessione.
 --- iterazione 17 · 2026-08-12 14:22:18 · effort medium ---
 Ignoring 14 permissions.allow entries from .claude/settings.json: this workspace has not been trusted. Run Claude Code interactively here once and accept the trust dialog, or set projects["/Users/simonealbanese/Documents/Matematics/frankl-transitive"].hasTrustDialogAccepted: true in /Users/simonealbanese/.claude.json.
+**T8 completato — OBIETTIVO GRADO 14 RAGGIUNTO. Il progetto è in DONE e il loop si fermerà da solo.**
+
+Cosa ho fatto in questa iterazione:
+
+- **`results/FOUND.md`**: il teorema di grado 14 con enunciato, catena logica (discesa dell'invarianza → riduzione ai minimali → 5 istanze UNSAT), tabella dei 5 gruppi (14T2, 14T6, 14T10, 14T12, 14T30) con esiti e tempi presi da `t6_decide.json` e dai log T7 (5/5 `s VERIFIED` da drat-trim, incluso 14T2 con verifica da 2939,8 s), e la sezione "come riverificare" con i comandi pronti.
+- **`docs/theorem-degree14.md`**: nota inglese col teorema e la struttura della dimostrazione, nello stile di `notes-minimality.md`.
+- **Chiusura**: `STATE/status.txt` → DONE, journal, backlog spuntato, HANDOFF riscritto (con le istruzioni per l'eventuale T9 a grado 15), SITUAZIONE.md e situazione.html su 🟢, notifica macOS inviata.
+- **Commit e push** su `origin/main` (1e6fcf3 → 1ece31a). Prima del push ho corretto il `.gitignore`: escludeva `results/*.cnf` ma i certificati stanno in `results/cnf/` — senza la correzione sarebbero finiti 3,3 GB su GitHub. I CNF/DRAT restano solo su disco locale.
+
+Il criterio di SUCCESS di GOAL.md ("risultato negativo di valore, grado 14") è soddisfatto e verificato con metodo indipendente. La prossima mossa spetta all'umano: proseguire con il grado 15 (rimettere `RUN` in `STATE/status.txt` e rilanciare il loop) oppure fermarsi e pubblicare. Fine iterazione.
+Risultato raggiunto (vedi results/FOUND.md).
+=== loop terminato 2026-08-12 14:28:24 dopo 18 iterazioni (status: DONE) ===
