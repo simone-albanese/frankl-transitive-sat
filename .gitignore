@@ -1,0 +1,18 @@
+# Python
+.venv/
+__pycache__/
+*.pyc
+
+# macOS noise
+.DS_Store
+
+# Solver toolchain: built from source (pinned commits), see the predecessor's
+# docs/reproducing.md
+tools/
+
+# Large generated artifacts (CNF/DRAT): reproducible, hash-anchored
+results/*.cnf
+results/*.drat
+
+# Backup copies
+*.bak-*
