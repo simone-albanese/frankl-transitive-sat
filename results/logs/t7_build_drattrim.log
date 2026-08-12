@@ -1,0 +1,5 @@
+gcc drat-trim.c -std=c99 -O2 -o drat-trim
+gcc lrat-check.c -std=c99 -DLONGTYPE -O2 -o lrat-check
+gcc compress.c -std=c99 -DLONGTYPE -O2 -o compress
+gcc decompress.c -std=c99 -DLONGTYPE -O2 -o decompress
+gcc gapless.c -std=c99 -O2 -o gapless

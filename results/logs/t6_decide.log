@@ -1,0 +1,10 @@
+  14T30: 50 orbite non banali, 10134 clausole di chiusura (build 0.0s)
+  14T30 mode=decide min_size=3: INFEASIBLE  [0.1s]
+  14T10: 154 orbite non banali, 159203 clausole di chiusura (build 0.1s)
+  14T10 mode=decide min_size=3: INFEASIBLE  [0.6s]
+  14T12: 170 orbite non banali, 146706 clausole di chiusura (build 0.1s)
+  14T12 mode=decide min_size=3: INFEASIBLE  [0.6s]
+  14T6: 422 orbite non banali, 1137222 clausole di chiusura (build 0.2s)
+  14T6 mode=decide min_size=3: INFEASIBLE  [7.5s]
+  14T2: 1234 orbite non banali, 7098740 clausole di chiusura (build 1.1s)
+  14T2 mode=decide min_size=3: INFEASIBLE  [74.0s]

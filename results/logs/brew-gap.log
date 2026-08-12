@@ -1,0 +1,36 @@
+==> Downloading Homebrew API data
+✔︎ JSON API packages.arm64_sequoia.jws.json
+Warning: No available formula with the name "gap". Did you mean grap, gat, gau, gvp, gup, gmp, gpp, nap or yap?
+==> Searching for similarly named formulae and casks...
+==> Formulae
+cogapp
+rocq-micromega-plugin
+grap
+gat
+gau
+gvp
+gup
+gmp
+gpp
+nap
+yap
+
+To install cogapp, run:
+  brew install cogapp
+
+==> Casks
+cap
+cog-app
+dosbox-staging-app
+gaphor
+kap
+r-rig-app
+roaringapps
+syncthing-app
+tag-app
+topaz-gigapixel
+topaz-gigapixel-ai
+zap
+
+To install cap, run:
+  brew install --cask cap

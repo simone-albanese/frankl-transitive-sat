@@ -13,6 +13,7 @@ tools/
 # Large generated artifacts (CNF/DRAT): reproducible, hash-anchored
 results/*.cnf
 results/*.drat
+results/cnf/
 
 # Backup copies
 *.bak-*

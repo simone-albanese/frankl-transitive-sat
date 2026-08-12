@@ -1,0 +1,59 @@
+26 gruppi senza 14-ciclo
+--- 14T2 ordine 14 (D_14(14)=[7]2)
+    [0.0s] MINIMAL_CERTIFIED orbite=1236
+--- 14T4 ordine 42 (2[1/2]F_42(7))
+    [0.0s] NOT_MINIMAL orbite=436
+--- 14T6 ordine 56 ([2^3]7)
+    [0.0s] MINIMAL_CERTIFIED orbite=424
+--- 14T10 ordine 168 (L_7(14))
+    [0.0s] MINIMAL_CERTIFIED orbite=156
+--- 14T11 ordine 168 ([2^3]F_21(7))
+    [0.0s] NOT_MINIMAL orbite=168
+--- 14T12 ordine 196 (1/2[D(7)^2]2)
+    [0.1s] UNKNOWN orbite=172
+--- 14T16 ordine 336 (L_7:2(14)=[L(7)_%]2)
+    [0.0s] NOT_MINIMAL orbite=146
+--- 14T21 ordine 448 ([2^6]7)
+    [0.0s] NOT_MINIMAL orbite=316
+--- 14T22 ordine 588 ([1/6_-.F_42(7)^2]2_2)
+    [0.0s] NOT_MINIMAL orbite=76
+--- 14T23 ordine 588 ([1/6_+.F_42(7)^2]2_2)
+    [0.0s] NOT_MINIMAL orbite=72
+--- 14T27 ordine 896 (2^7[1/2]D(7))
+    [0.0s] NOT_MINIMAL orbite=198
+--- 14T28 ordine 896 ([2^6]D(7))
+    [0.0s] NOT_MINIMAL orbite=199
+--- 14T30 ordine 1092 (L(14)=PSL(2,13))
+    [1.3s] MINIMAL_CERTIFIED orbite=52
+--- 14T33 ordine 1344 (2^3`L_7(14))
+    [0.0s] NOT_MINIMAL orbite=62
+--- 14T34 ordine 1344 (2^3:L_7(14)=[2^3]L(7)=[2^3]L(3,2))
+    [0.0s] NOT_MINIMAL orbite=86
+--- 14T35 ordine 1344 ([2^6]F_21(7))
+    [0.0s] NOT_MINIMAL orbite=124
+--- 14T36 ordine 1764 (1/2[F_42(7)^2]2)
+    [0.0s] NOT_MINIMAL orbite=56
+--- 14T40 ordine 2688 (1/2[2^7]F_42(7))
+    [0.0s] NOT_MINIMAL orbite=78
+--- 14T41 ordine 2688 ([2^6]F_42(7))
+    [0.0s] NOT_MINIMAL orbite=79
+--- 14T46 ordine 5040 (2[1/2]S(7))
+    [0.3s] UNKNOWN orbite=70
+--- 14T50 ordine 10752 ([2^6]L(7))
+    [0.1s] NOT_MINIMAL orbite=61
+--- 14T53 ordine 161280 ([2^6]A(7))
+    [1.0s] NOT_MINIMAL orbite=37
+--- 14T54 ordine 322560 (1/2[2^7]S(7))
+    [2.0s] NOT_MINIMAL orbite=36
+--- 14T55 ordine 322560 ([2^6]S(7))
+    [1.7s] NOT_MINIMAL orbite=37
+--- 14T59 ordine 25401600 (1/2[S(7)^2]2)
+    [0.0s] NOT_MINIMAL
+--- 14T62 ordine 43589145600 (A14)
+    [0.0s] NOT_MINIMAL
+
+=== SOMMARIO ===
+MINIMALI CERTIFICATI: [(2, 14, 1236), (6, 56, 424), (10, 168, 156), (30, 1092, 52)]
+UNKNOWN (follow-up): [(12, 196), (46, 5040)]
+NOT_MINIMAL: [4, 11, 16, 21, 22, 23, 27, 28, 33, 34, 35, 36, 40, 41, 50, 53, 54, 55, 59, 62]
+scritto results/minimality_scan.json

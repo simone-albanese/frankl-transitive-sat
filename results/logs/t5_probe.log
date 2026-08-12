@@ -1,0 +1,15 @@
+  14T30: 50 orbite non banali, 10134 clausole di chiusura (build 0.0s)
+  14T30 mode=probe min_size=3: PROBE  [0.1s]
+  probe: 50 orbite, 10134 clausole, build 0.0s, RSS 0.08 GB
+  14T10: 154 orbite non banali, 159203 clausole di chiusura (build 0.1s)
+  14T10 mode=probe min_size=3: PROBE  [0.4s]
+  probe: 154 orbite, 159203 clausole, build 0.1s, RSS 0.12 GB
+  14T6: 422 orbite non banali, 1137222 clausole di chiusura (build 0.2s)
+  14T6 mode=probe min_size=3: PROBE  [2.7s]
+  probe: 422 orbite, 1137222 clausole, build 0.2s, RSS 0.36 GB
+  14T12: 170 orbite non banali, 146706 clausole di chiusura (build 0.1s)
+  14T12 mode=probe min_size=3: PROBE  [0.4s]
+  probe: 170 orbite, 146706 clausole, build 0.1s, RSS 0.12 GB
+  14T2: 1234 orbite non banali, 7098740 clausole di chiusura (build 1.0s)
+  14T2 mode=probe min_size=3: PROBE  [16.7s]
+  probe: 1234 orbite, 7098740 clausole, build 1.0s, RSS 1.78 GB

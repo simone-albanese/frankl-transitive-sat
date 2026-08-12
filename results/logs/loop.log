@@ -1,0 +1,166 @@
+=== loop avviato 2026-08-12 11:53:22 · pid 11440 · max 200 iterazioni · pausa 8s/600s ===
+--- iterazione 1 · 2026-08-12 11:53:22 · effort medium ---
+Ignoring 14 permissions.allow entries from .claude/settings.json: this workspace has not been trusted. Run Claude Code interactively here once and accept the trust dialog, or set projects["/Users/simonealbanese/Documents/Matematics/frankl-transitive"].hasTrustDialogAccepted: true in /Users/simonealbanese/.claude.json.
+Iterazione completata. Riepilogo:
+
+**Task eseguito: T1 — census dei gruppi transitivi di grado 14. SUCCESS.**
+
+- GAP non è installabile via Homebrew (nessuna formula esistente), quindi ho usato la strada B: l'API LMFDB (il campo corretto del grado è `n`, non `degree`) ha restituito tutti i 63 gruppi attesi, con ordini e generatori.
+- Ho scritto `scripts/census14_build.py` che decide `has_14_cycle` in modo rigoroso per tutti e 63: enumerazione esaustiva degli elementi per i 57 gruppi di ordine ≤ 2·10⁶ (con assert che il conteggio coincida con l'ordine LMFDB — un cross-check indipendente), e per i 6 gruppi grandi il test di parità (G ≤ A14 ⇒ nessun 14-ciclo, perché un 14-ciclo è una permutazione dispari) oppure un testimone esplicito verificato.
+- **Esito: 37 gruppi con 14-ciclo, 26 senza** (t = 2, 4, 6, 10, 11, 12, 16, 21, 22, 23, 27, 28, 30, 33, 34, 35, 36, 40, 41, 46, 50, 53, 54, 55, 59, 62). Deliverable in `STATE/census14.json`.
+- Sanity tutti superati: 14T1 = C14 ha il ciclo; 14T2 = D7 regolare e 14T30 = PSL(2,13) non ce l'hanno.
+- Stato aggiornato: journal, backlog (T1 spuntato, nota GAP su T2), HANDOFF riscritto, SITUAZIONE.md/html rigenerati, `STATE/effort.txt` portato a `high` per il prossimo task (T2, progettazione del lemma di minimalità).
+
+Fine sessione — il prossimo giro del driver riparte da T2.
+--- iterazione 2 · 2026-08-12 11:57:38 · effort high ---
+Ignoring 14 permissions.allow entries from .claude/settings.json: this workspace has not been trusted. Run Claude Code interactively here once and accept the trust dialog, or set projects["/Users/simonealbanese/Documents/Matematics/frankl-transitive"].hasTrustDialogAccepted: true in /Users/simonealbanese/.claude.json.
+**Iterazione conclusa — T2 completato con successo.**
+
+**Cosa ho fatto:** il task in cima al backlog era T2, la riduzione di minimalità per il grado 14. Ho scritto `docs/notes-minimality.md` (lemmi di discesa, ereditarietà del no-ciclo, 2-generazione dei transitivi minimali con 7-elemento senza punti fissi, e il teorema di copertura) e `scripts/minimality_scan.py`, che applica il criterio come certificato computazionale esaustivo sui 26 gruppi senza 14-ciclo.
+
+**Risultato:** la lista finale dei gruppi-istanza da decidere è di **5 gruppi** (era 26):
+
+| gruppo | ordine | orbite | stato |
+|---|---|---|---|
+| 14T2 = D7 regolare | 14 | 1236 | minimale certificato |
+| 14T6 | 56 | 424 | minimale certificato |
+| 14T10 | 168 | 156 | minimale certificato |
+| 14T12 | 196 | 172 | UNKNOWN, incluso per prudenza |
+| 14T30 = PSL(2,13) | 1092 | 52 | minimale certificato |
+
+Gli altri 21 hanno tutti un testimone esplicito di sottogruppo transitivo proprio (per A14 il testimone è PSL(2,13) stesso; per 14T59 una costruzione dentro (F42≀2)∩A14). I sanity indipendenti sono passati: le orbite di D7 (1236) e PSL(2,13) (52) calcolate dallo scan coincidono col calcolo a mano sulle classi di coniugio. Un dettaglio risolto in corsa: 14T46 era uscito UNKNOWN dal campionamento, ma avendo tutti i 7-elementi senza punti fissi ho potuto certificarlo esaustivamente — non è minimale (contiene un transitivo di ordine 42). 14T12 invece resta UNKNOWN per una ragione strutturale (ha 7-elementi con punti fissi, il criterio non si applica) e lo tengo in lista: includerlo è comunque corretto e con sole 172 orbite deciderlo via SAT costa poco.
+
+**Stato aggiornato:** journal, backlog (T2 spuntato, aggiunto task opzionale su 14T12), `effort.txt` → `medium`, HANDOFF riscritto col prossimo task (T3: `group_orbits.py` + encoder generalizzati), SITUAZIONE.md/html e notifica macOS inviati. Nessun run in background attivo. La sessione può terminare.
+--- iterazione 3 · 2026-08-12 12:12:26 · effort medium ---
+Ignoring 14 permissions.allow entries from .claude/settings.json: this workspace has not been trusted. Run Claude Code interactively here once and accept the trust dialog, or set projects["/Users/simonealbanese/Documents/Matematics/frankl-transitive"].hasTrustDialogAccepted: true in /Users/simonealbanese/.claude.json.
+Iterazione completata: **T3 fatto e spuntato**.
+
+**Cosa ho prodotto.** I tre moduli della pipeline generalizzata (nessun modulo ciclico toccato):
+- `group_orbits.py` — orbite dei sottoinsiemi (bitmask) sotto generatori arbitrari via BFS, canone = minimo dell'orbita, con l'assert del lemma di integrità m | r·s;
+- `sat_group.py` — decisione CP-SAT con margine scalato Σ r(2s−m)x ≤ −m e chiusura col rappresentante fisso, con la giustificazione per gruppi non ciclici scritta nel docstring come richiesto;
+- `dump_dimacs_group.py` — export DIMACS riusando `pb_adder`.
+
+**Verifiche (tutte in questa sessione).** 14T2 dà 1234 orbite non banali e 14T30 ne dà 50, coerenti coi totali 1236 e 52 certificati in T2 (che includono ∅ e full); Z7 in modalità decide è INFEASIBLE; soprattutto, i file DIMACS per Z7 e Z11 generati dalla pipeline nuova sono **byte-identici** (`cmp`) a quelli del `dump_dimacs.py` già validato — sui casi ciclici i due encoder coincidono esattamente.
+
+**Stato aggiornato.** Backlog spuntato, journal aggiornato, HANDOFF riscritto col prossimo task pronto (T4: validazione piena su Z13 — attesi 630 orbite, 1.863.311 clausole, INFEASIBLE — e Z14 min3, con i comandi da incollare in background), SITUAZIONE.md e situazione.html aggiornati (semaforo verde). Nessun run in background attivo. Sessione conclusa.
+--- iterazione 4 · 2026-08-12 12:16:16 · effort medium ---
+Ignoring 14 permissions.allow entries from .claude/settings.json: this workspace has not been trusted. Run Claude Code interactively here once and accept the trust dialog, or set projects["/Users/simonealbanese/Documents/Matematics/frankl-transitive"].hasTrustDialogAccepted: true in /Users/simonealbanese/.claude.json.
+**Iterazione conclusa — T4 completato con successo.**
+
+La pipeline generalizzata (`group_orbits.py` + `sat_group.py`) è stata validata su entrambi i casi certificati, con numeri identici a quelli pubblicati nel progetto precedente:
+
+- **Z13**: 630 orbite non banali, 1.863.311 clausole, **INFEASIBLE** in 15,5s (`results/logs/t4_z13.log`)
+- **Z14 min_size=3**: 1180 orbite, 7.320.454 clausole, **INFEASIBLE** in 90,1s (`results/logs/t4_z14min3.log`)
+
+Registrato tutto: journal aggiornato, T4 spuntato nel backlog, HANDOFF riscritto con il prossimo task (T5 — sonda risorse dei 5 gruppi-istanza, con l'indicazione di aggiungere un mode "probe" build-only a `sat_group.py`), SITUAZIONE.md e situazione.html aggiornati, notifica macOS inviata. Nessun run in background attivo. Status: RUN. Sessione terminata.
+--- iterazione 5 · 2026-08-12 12:20:19 · effort medium ---
+Ignoring 14 permissions.allow entries from .claude/settings.json: this workspace has not been trusted. Run Claude Code interactively here once and accept the trust dialog, or set projects["/Users/simonealbanese/Documents/Matematics/frankl-transitive"].hasTrustDialogAccepted: true in /Users/simonealbanese/.claude.json.
+Iterazione T5 completata.
+
+**Cosa ho fatto:** ho aggiunto una modalità `probe` a `sat_group.py` (costruisce il modello, riporta orbite/clausole/RSS di picco, senza risolvere) e l'ho usata sulle cinque istanze del census. Prima ho verificato la sonda su Z13, che riproduce esattamente i numeri di T4 (630 orbite, 1.863.311 clausole).
+
+**Risultato:** tutte le istanze stanno ampiamente nei budget hardware — la più grossa è 14T2 con 1.234 orbite, 7,10M clausole e 1,78 GB di RSS (cap: 9 GB), paragonabile a Z14 min3 che si risolveva in 90 secondi. Nessuno sharding necessario. Dati in `results/t5_probe.json` e `results/logs/t5_probe.log`.
+
+**Stato aggiornato:** backlog (T5 spuntato), journal, HANDOFF riscritto con i comandi pronti per T6 (decide CP-SAT taglie ≥ 3 sulle cinque istanze, in foreground dal più piccolo), SITUAZIONE.md e situazione.html. Status resta RUN. Sessione conclusa.
+--- iterazione 6 · 2026-08-12 12:24:04 · effort medium ---
+Ignoring 14 permissions.allow entries from .claude/settings.json: this workspace has not been trusted. Run Claude Code interactively here once and accept the trust dialog, or set projects["/Users/simonealbanese/Documents/Matematics/frankl-transitive"].hasTrustDialogAccepted: true in /Users/simonealbanese/.claude.json.
+**Iterazione T6 completata.** Ho eseguito il task in cima al backlog: la decisione CP-SAT delle 5 istanze transitive di grado 14 senza 14-ciclo (14T30, 14T10, 14T12, 14T6, 14T2, taglie ≥ 3).
+
+**Esito: tutte e 5 INFEASIBLE** — nessuna famiglia union-closed invariante che violi la congettura di Frankl esiste per questi gruppi. I tempi sono stati molto sotto le stime: la più grande (14T2, 7,1M clausole) si è chiusa in 74 secondi; il cap di 1200s non è mai stato avvicinato. Nessun candidato controesempio, quindi nessun doppio checker necessario.
+
+Registrato tutto su file: `results/t6_decide.json`, journal, backlog (T6 spuntato), HANDOFF riscritto, SITUAZIONE.md + situazione.html aggiornati (semaforo 🟢), notifica macOS inviata, e una lezione nuova in `STATE/lezioni.md` (il primo lancio era fallito perché `$PY` non era esportato nel sotto-shell — corretto e rilanciato subito).
+
+Nota di rigore: i verdetti sono dell'unico solver OR-Tools, quindi per GOAL.md non sono ancora un SUCCESS — serve la certificazione indipendente. Il prossimo task è **T7** (toolchain cadical + drat-trim, validazione su Z7/Z11, poi certificato DRAT per ciascun gruppo), con i comandi pronti nell'HANDOFF. Nessun run attivo in background. Fine iterazione.
+--- iterazione 7 · 2026-08-12 12:28:48 · effort medium ---
+Ignoring 14 permissions.allow entries from .claude/settings.json: this workspace has not been trusted. Run Claude Code interactively here once and accept the trust dialog, or set projects["/Users/simonealbanese/Documents/Matematics/frankl-transitive"].hasTrustDialogAccepted: true in /Users/simonealbanese/.claude.json.
+Iterazione conclusa. Riepilogo:
+
+**Task eseguito: T7 (parti a+b) — toolchain di certificazione DRAT.**
+
+- **Toolchain compilata** ai commit pinnati della ricetta: `tools/cadical` (3.0.1) e `tools/drat-trim`, build pulite.
+- **Validazione obbligatoria superata**: Z7 e Z11 entrambi UNSAT (cadical exit 20) con `s VERIFIED` da drat-trim — la catena di certificazione riproduce i teoremi noti.
+- **Produzione**: 14T30, 14T10, 14T12, 14T6 (min_size=3) tutti certificati **UNSAT VERIFIED** in pochi secondi ciascuno. Quattro dei cinque verdetti CP-SAT di T6 sono ora confermati con metodo indipendente.
+- **14T2** (l'istanza grossa, 7,1M clausole) gira in background adesso: PID 19098, watchdog 120 min / 9 GB, log `results/logs/t7_14T2.log`. Alla verifica, cadical era in solving da ~90 s e progrediva regolarmente.
+
+Stato aggiornato: backlog (T7 quasi chiuso), journal, HANDOFF riscritto (prossimo giro: verificare l'esito di 14T2, poi T8), SITUAZIONE.md + situazione.html (semaforo 🟢), lezione nuova su cwd persistente. Status resta `RUN`. Sessione terminata.
+    (job sotto watchdog: prossimo controllo fra 600s)
+--- iterazione 8 · 2026-08-12 12:44:04 · effort medium ---
+Ignoring 14 permissions.allow entries from .claude/settings.json: this workspace has not been trusted. Run Claude Code interactively here once and accept the trust dialog, or set projects["/Users/simonealbanese/Documents/Matematics/frankl-transitive"].hasTrustDialogAccepted: true in /Users/simonealbanese/.claude.json.
+Iterazione completata e chiusa.
+
+**Esito:** il run in background su 14T2 (PID 19098) è vivo e procede regolarmente — cadical è a ~12 minuti di solving su un cap di 120, con ~1,7 milioni di conflitti e memoria stabile. Come previsto dall'handoff, l'ho lasciato lavorare senza avviare altri task pesanti in parallelo.
+
+**Registrato:** journal aggiornato, HANDOFF.md riscritto (il prossimo task resta identico: verificare l'esito di 14T2 e, se UNSAT VERIFIED, chiudere T7 e passare a T8), SITUAZIONE.md e situazione.html aggiornati per il monitor umano. Status invariato: RUN. Nessuna notifica macOS necessaria (nessun evento importante). Fine sessione.
+    (job sotto watchdog: prossimo controllo fra 600s)
+--- iterazione 9 · 2026-08-12 12:55:33 · effort medium ---
+Ignoring 14 permissions.allow entries from .claude/settings.json: this workspace has not been trusted. Run Claude Code interactively here once and accept the trust dialog, or set projects["/Users/simonealbanese/Documents/Matematics/frankl-transitive"].hasTrustDialogAccepted: true in /Users/simonealbanese/.claude.json.
+Iterazione completata (sola sorveglianza, come previsto dall'handoff).
+
+**Esito:** il run SAT su 14T2 (PID 19098) è **vivo e in progresso regolare** — cadical a ~1423s di solving, ~3,8M conflitti, RAM trascurabile, ~24 minuti trascorsi sul cap di 120. Nessun intervento necessario; nessun altro task avviato in parallelo, come da regola.
+
+**Registrato:** journal aggiornato, HANDOFF riscritto (prossimo task: ricontrollare l'esito di 14T2 e, se UNSAT VERIFIED, chiudere T7 e passare a T8), SITUAZIONE.md e situazione.html aggiornati con semaforo 🟢. Fine sessione.
+    (job sotto watchdog: prossimo controllo fra 600s)
+--- iterazione 10 · 2026-08-12 13:07:58 · effort medium ---
+Ignoring 14 permissions.allow entries from .claude/settings.json: this workspace has not been trusted. Run Claude Code interactively here once and accept the trust dialog, or set projects["/Users/simonealbanese/Documents/Matematics/frankl-transitive"].hasTrustDialogAccepted: true in /Users/simonealbanese/.claude.json.
+Iterazione completata: solo monitoraggio, come previsto dall'handoff.
+
+**Esito:** il run SAT su 14T2 (PID 19098) è vivo e progredisce regolarmente — cadical a ~2144s di solving, ~6,4M conflitti, "remaining" sceso dal 79% al 61%, elapsed 36 minuti su un cap di 120, RAM trascurabile. Nessun intervento necessario; l'ho lasciato lavorare senza avviare altri task.
+
+Aggiornati: journal (nuova voce), HANDOFF.md (riscritto con lo stato attuale e una nota sui timestamp incoerenti del giro precedente — fare fede su `ps -o etime=`), SITUAZIONE.md e situazione.html (semaforo verde). Il prossimo giro deve solo ricontrollare 14T2: se finito con `CADICAL_EXIT=20` + `s VERIFIED`, T7 è chiuso e si passa a T8 (teorema grado 14). Fine sessione.
+    (job sotto watchdog: prossimo controllo fra 600s)
+--- iterazione 11 · 2026-08-12 13:20:06 · effort medium ---
+Ignoring 14 permissions.allow entries from .claude/settings.json: this workspace has not been trusted. Run Claude Code interactively here once and accept the trust dialog, or set projects["/Users/simonealbanese/Documents/Matematics/frankl-transitive"].hasTrustDialogAccepted: true in /Users/simonealbanese/.claude.json.
+Iterazione completata (sola sorveglianza, come previsto dall'handoff).
+
+**Esito:** il run SAT su 14T2 (PID 19098, l'ultimo dei 5 gruppi minimali di grado 14) è **vivo e in progresso regolare** — elapsed 48 min su cap 120, cadical a ~2889s di solving con i conflitti saliti da 6,4M a 9,47M dal giro precedente, RAM trascurabile. Nessun intervento necessario: l'ho lasciato lavorare.
+
+**Aggiornati:** journal (voce di sorveglianza), HANDOFF.md (riscritto con i dati freschi; prossimo task invariato: verificare l'esito di 14T2 e, se `CADICAL_EXIT=20` + `s VERIFIED`, chiudere T7 e passare a T8), SITUAZIONE.md e situazione.html (semaforo 🟢). Status resta RUN. Fine sessione.
+    (job sotto watchdog: prossimo controllo fra 600s)
+--- iterazione 12 · 2026-08-12 13:32:35 · effort medium ---
+Ignoring 14 permissions.allow entries from .claude/settings.json: this workspace has not been trusted. Run Claude Code interactively here once and accept the trust dialog, or set projects["/Users/simonealbanese/Documents/Matematics/frankl-transitive"].hasTrustDialogAccepted: true in /Users/simonealbanese/.claude.json.
+Iterazione conclusa (giro di solo controllo, come indicato dall'handoff).
+
+**Esito:** il run in background su 14T2 (PID 19098, elapsed ~1h) ha una svolta importante: **cadical ha terminato con `s UNSATISFIABLE` (exit 20)** — l'ultimo dei 5 gruppi minimali è UNSAT. Ora sta girando drat-trim per la verifica indipendente del certificato (~19k warning "duplicate literal" nel log, tutti benigni). Per il SUCCESS di T7 manca solo `s VERIFIED` + `DRAT_EXIT=0`.
+
+**Registrato:** journal aggiornato, HANDOFF riscritto (prossimo task: leggere l'esito di drat-trim, con piano B se il watchdog da 120 min lo uccide prima — rilancio del solo drat-trim o conferma con kissat), SITUAZIONE.md/html aggiornati (🟢), notifica macOS inviata. Il run resta al lavoro sotto watchdog; il prossimo giro chiude T7 e, se verificato, passa a T8 (FOUND.md + DONE).
+    (job sotto watchdog: prossimo controllo fra 600s)
+--- iterazione 13 · 2026-08-12 13:44:07 · effort medium ---
+Ignoring 14 permissions.allow entries from .claude/settings.json: this workspace has not been trusted. Run Claude Code interactively here once and accept the trust dialog, or set projects["/Users/simonealbanese/Documents/Matematics/frankl-transitive"].hasTrustDialogAccepted: true in /Users/simonealbanese/.claude.json.
+Iterazione chiusa. Riepilogo:
+
+- **Task eseguito** (dal top del backlog/handoff): controllo del run in background su 14T2 (T7).
+- **Esito:** il run è vivo (PID 19098, elapsed 1:12:24 su cap 120 min). cadical ha già chiuso con `s UNSATISFIABLE` (exit 20); drat-trim (PID 24259) sta verificando il certificato al 99% di CPU, RSS ~2,2 GB (ben sotto il cap di 9 GB), proof line ~7,22M. Nessun verdetto ancora nel log — lasciato lavorare, nessun'altra azione, come previsto dall'handoff.
+- **Stato aggiornato:** journal (nuova voce), HANDOFF.md riscritto (prossimo task: leggere l'esito di drat-trim, con i comandi pronti), SITUAZIONE.md e situazione.html aggiornati (semaforo 🟢). Backlog e status.txt invariati (T7 ancora aperto, RUN).
+
+Sessione terminata: il prossimo giro del driver leggerà il verdetto di drat-trim e, se `s VERIFIED`, chiuderà T7 e passerà a T8.
+    (job sotto watchdog: prossimo controllo fra 600s)
+--- iterazione 14 · 2026-08-12 13:55:47 · effort medium ---
+Ignoring 14 permissions.allow entries from .claude/settings.json: this workspace has not been trusted. Run Claude Code interactively here once and accept the trust dialog, or set projects["/Users/simonealbanese/Documents/Matematics/frankl-transitive"].hasTrustDialogAccepted: true in /Users/simonealbanese/.claude.json.
+Iterazione completata. In sintesi:
+
+**Esito:** il run in background su 14T2 (l'ultimo dei 5 gruppi minimali di T7) è vivo e sano. Cadical ha già chiuso con UNSAT (exit 20); drat-trim sta verificando il certificato — elapsed 29 min, 98,6% CPU, RAM 2,1 GB su cap di 9 GB, proof alla riga ~7,22M, solo WARNING benigni, nessun verdetto ancora. Come prescritto dall'handoff, l'ho lasciato lavorare senza altre azioni.
+
+**Stato aggiornato:** journal (voce di monitoraggio), HANDOFF riscritto (con nota: gli orari dei vecchi handoff erano sfasati rispetto all'orologio reale — ora 13:56, wrapper elapsed 1:24), SITUAZIONE.md e situazione.html (semaforo 🟢). Backlog invariato.
+
+**Prossimo giro:** leggere il verdetto di drat-trim (`grep -E 'DRAT_EXIT|s VERIFIED|s NOT' results/logs/t7_14T2.log`). Se `s VERIFIED`, T7 è chiuso e si passa a T8 (chiusura del teorema di grado 14, FOUND.md, DONE). Attenzione al watchdog: kill atteso verso elapsed ~2:00 — in tal caso l'handoff elenca le opzioni per la seconda gamba senza ricalcolare cadical.
+    (job sotto watchdog: prossimo controllo fra 600s)
+--- iterazione 15 · 2026-08-12 14:07:41 · effort medium ---
+Ignoring 14 permissions.allow entries from .claude/settings.json: this workspace has not been trusted. Run Claude Code interactively here once and accept the trust dialog, or set projects["/Users/simonealbanese/Documents/Matematics/frankl-transitive"].hasTrustDialogAccepted: true in /Users/simonealbanese/.claude.json.
+Iterazione completata. In sintesi:
+
+- **Task eseguito:** controllo del run in background su 14T2 (l'ultimo dei 5 gruppi minimali di grado 14).
+- **Esito:** il run è vivo e sano. drat-trim sta verificando il certificato UNSAT da 41:35 (99,3% CPU, RSS ~2 GB, ben sotto il cap di 9 GB), solo WARNING benigni, nessun verdetto ancora. Come da handoff, l'ho lasciato lavorare.
+- **Punto d'attenzione registrato:** il watchdog del wrapper ha cap 120 min (elapsed attuale 1:36), quindi c'è il rischio di un KILL verso le ~14:32 prima che drat-trim finisca. Nell'handoff ho lasciato i comandi pronti per il caso KILL: rilanciare solo drat-trim sul `.drat` già scritto con cap 180 min, oppure confermare con kissat come secondo solver.
+- **Stato aggiornato:** journal, HANDOFF.md, SITUAZIONE.md e situazione.html riscritti. Backlog e status invariati (T7 ancora aperto, RUN).
+
+Sessione chiusa: il prossimo giro del driver leggerà il verdetto (o gestirà il timeout).
+    (job sotto watchdog: prossimo controllo fra 600s)
+--- iterazione 16 · 2026-08-12 14:20:09 · effort medium ---
+Ignoring 14 permissions.allow entries from .claude/settings.json: this workspace has not been trusted. Run Claude Code interactively here once and accept the trust dialog, or set projects["/Users/simonealbanese/Documents/Matematics/frankl-transitive"].hasTrustDialogAccepted: true in /Users/simonealbanese/.claude.json.
+**Iterazione completata: T7 è chiuso con esito positivo.**
+
+Il run in background su 14T2 è terminato prima del limite del watchdog: drat-trim ha emesso `s VERIFIED` con `DRAT_EXIT=0` (2939,8 secondi di verifica, log in `results/logs/t7_14T2.log`). Con questo tutti e 5 i gruppi transitivi minimali di grado 14 senza 14-ciclo (14T2, 14T6, 14T10, 14T12, 14T30) sono UNSAT per taglie ≥ 3 con doppia conferma indipendente: CP-SAT (T6) e cadical + certificato DRAT verificato (T7). I calcoli richiesti dal criterio di SUCCESS di GOAL.md sono dunque tutti in cassaforte.
+
+Stato aggiornato su file: T7 spuntato nel backlog, entry nel journal, `STATE/HANDOFF.md` riscritto con le istruzioni precise per il prossimo task (T8: scrittura di `results/FOUND.md` con enunciato, catena logica e istruzioni di riverifica, docs in inglese, poi `DONE`), monitor SITUAZIONE/HTML su 🟢 e notifica macOS inviata. Nessun run in background attivo. Fine sessione.
+--- iterazione 17 · 2026-08-12 14:22:18 · effort medium ---
+Ignoring 14 permissions.allow entries from .claude/settings.json: this workspace has not been trusted. Run Claude Code interactively here once and accept the trust dialog, or set projects["/Users/simonealbanese/Documents/Matematics/frankl-transitive"].hasTrustDialogAccepted: true in /Users/simonealbanese/.claude.json.

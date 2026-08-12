@@ -1,0 +1,14 @@
+{
+  "task": "T5 — sonda risorse (build-only, min_set_size=3), 2026-08-12",
+  "note": "RSS = picco ru_maxrss del processo dopo build modello CP-SAT; budget RAM_JOB_MAX_GB=9",
+  "sanity_Z13": {"n_orbits": 630, "n_clauses": 1863311, "build_s": 0.3, "rss_gb": 0.53, "match_T4": true},
+  "probes": [
+    {"group": "14T30", "n_orbits": 50,   "n_clauses": 10134,   "build_s": 0.0, "rss_gb": 0.08},
+    {"group": "14T10", "n_orbits": 154,  "n_clauses": 159203,  "build_s": 0.1, "rss_gb": 0.12},
+    {"group": "14T12", "n_orbits": 170,  "n_clauses": 146706,  "build_s": 0.1, "rss_gb": 0.12},
+    {"group": "14T6",  "n_orbits": 422,  "n_clauses": 1137222, "build_s": 0.2, "rss_gb": 0.36},
+    {"group": "14T2",  "n_orbits": 1234, "n_clauses": 7098740, "build_s": 1.0, "rss_gb": 1.78}
+  ],
+  "reference": {"group": "Z14 min3 (T4)", "n_orbits": 1180, "n_clauses": 7320454, "solve_s": 90.1},
+  "conclusion": "Tutte le istanze entro budget. 14T2 ~ Z14 per clausole: solve atteso in minuti. Nessuno sharding necessario; T6 puo' partire in foreground per 14T30/10/12/6 e con cap generoso per 14T2."
+}

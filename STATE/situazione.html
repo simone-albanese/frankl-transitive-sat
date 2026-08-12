@@ -3,25 +3,54 @@
 <head>
 <meta charset="utf-8">
 <meta http-equiv="refresh" content="60">
-<title>Frankl Transitivo — Situazione</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Progetto Frankl — Situazione</title>
 <style>
-  body { background:#e8f5e9; color:#1b3a1e; font-family:-apple-system,Helvetica,Arial,sans-serif;
-         font-size:22px; line-height:1.55; max-width:780px; margin:40px auto; padding:0 24px; }
-  h1 { font-size:30px; }
-  .semaforo { font-size:26px; font-weight:bold; }
-  .box { background:#ffffffcc; border-radius:12px; padding:18px 22px; margin:14px 0; }
-  .label { font-weight:bold; }
+  body { background: #e6f7e6; color: #1a1a1a; font-family: -apple-system, "Helvetica Neue", sans-serif;
+         font-size: 22px; line-height: 1.55; max-width: 760px; margin: 40px auto; padding: 0 24px; }
+  h1 { font-size: 30px; }
+  .semaforo { font-size: 26px; font-weight: 700; color: #1a7a1a; }
+  .box { background: #ffffffcc; border-radius: 12px; padding: 18px 22px; margin: 14px 0; }
+  .label { font-weight: 700; }
+  .bar { font-family: monospace; font-size: 24px; }
 </style>
 </head>
 <body>
-<h1>Situazione — aggiornata il 12 agosto 2026, ore 11:55</h1>
-<p class="semaforo">🟢 Tutto bene</p>
-<div class="box"><span class="label">In una frase:</span> è partita la nuova ricerca: controlliamo se la regola matematica resiste anche alle famiglie con simmetrie diverse dalla rotazione, su 14 punti.</div>
-<div class="box"><span class="label">Trovato qualcosa?</span> Non ancora: siamo alla preparazione, tutta superata.</div>
-<div class="box"><span class="label">Avanzamento:</span> ▓░░░░░░░░░ &nbsp;compito 0 di ~10 (fondamenta pronte)</div>
-<div class="box"><span class="label">Ultima novità, in parole povere:</span> laboratorio nuovo montato riusando gli attrezzi collaudati della ricerca precedente; ogni attrezzo ha superato il collaudo. Primo compito: l'elenco completo delle simmetrie possibili su 14 punti.</div>
-<div class="box"><span class="label">Prossima mossa:</span> lanciare il ciclo automatico (<code>bash scripts/loop.sh</code> da un Terminale pulito).</div>
-<div class="box"><span class="label">Serve qualcosa da te?</span> Solo avviare il ciclo quando vuoi che parta.</div>
-<div class="box"><span class="label">Il tuo Mac:</span> tranquillo, nessun calcolo in corso.</div>
+<h1>Situazione — 12 agosto 2026, pomeriggio</h1>
+<p class="semaforo">🟢 Tutto bene — OBIETTIVO RAGGIUNTO (grado 14)</p>
+
+<div class="box"><span class="label">In una frase:</span> ho finito e messo
+nero su bianco il risultato: la regola matematica che stiamo studiando vale
+per TUTTE le simmetrie "che mescolano tutto" su 14 elementi — dimostrato e
+ricontrollato con due metodi diversi.</div>
+
+<div class="box"><span class="label">Trovato qualcosa?</span> SÌ, ma nel
+senso buono: nessuna eccezione esiste. Abbiamo la certezza (con "scontrini"
+verificabili da chiunque) che su 14 elementi la congettura regge per tutte
+queste simmetrie.</div>
+
+<div class="box"><span class="label">Avanzamento:</span>
+<span class="bar">▓▓▓▓▓▓▓▓▓▓</span> compito 8 di 8 del piano "grado 14" —
+COMPLETO.</div>
+
+<div class="box"><span class="label">Ultima novità, in parole povere:</span>
+è come aver controllato tutte le serrature possibili di un palazzo: invece
+di provarle una per una (63), abbiamo dimostrato che bastava provarne 5
+"fondamentali" più una già controllata in passato. Tutte e 5 sono risultate
+a posto, e ogni controllo ha prodotto una ricevuta che un programma
+indipendente ha timbrato come valida. Il risultato completo è in
+<code>results/FOUND.md</code>.</div>
+
+<div class="box"><span class="label">Prossima mossa:</span> niente in
+automatico: il ciclo si ferma da solo. Per proseguire con 15 elementi,
+rimetti <code>RUN</code> in <code>STATE/status.txt</code> e rilancia
+<code>bash scripts/loop.sh</code>.</div>
+
+<div class="box"><span class="label">Serve qualcosa da te?</span> Solo una
+decisione, con calma: proseguire con 15 elementi, oppure fermarsi qui e
+pensare a pubblicare questo risultato.</div>
+
+<div class="box"><span class="label">Il tuo Mac:</span> tranquillo, nessun
+calcolo in corso.</div>
 </body>
 </html>

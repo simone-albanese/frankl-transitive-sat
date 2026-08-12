@@ -145,3 +145,15 @@ sbagliata. Verificato: figlio con 11 variabili ereditate prima della correzione,
 e' corretto da qualunque contesto venga lanciato. `ANTHROPIC_*` NON si tocca: e' l'auth.
 `env -u ...` dal chiamante NON basta: in zsh l'espansione non fa word-splitting e i flag
 arrivano a `env` come un unico argomento.
+
+## Sotto-shell e variabili: export obbligatorio
+`source STATE/hardware.env` non basta per i job lanciati con `bash -c '...'`:
+$PY arriva vuoto ("command not found") se non si fa `export PY` prima.
+Confermato in T6 (primo lancio fallito, secondo ok). Inoltre in zsh
+`echo ===` fallisce: evitare separatori fatti solo di `=`.
+
+## La cwd di Bash persiste tra le chiamate: usare path assoluti
+Un `cd tools && ...` in una chiamata lascia la shell in quella directory
+per le chiamate successive: il `cd tools` seguente fallisce (cercherebbe
+tools/tools). Correzione confermata: ogni `cd` con path assoluto, oppure
+niente `cd` e path assoluti nei comandi. (Emersa in T7 compilando drat-trim.)

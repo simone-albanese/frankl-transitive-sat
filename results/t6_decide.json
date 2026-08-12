@@ -1,0 +1,14 @@
+{
+  "task": "T6 — decide CP-SAT, min_size=3, cap 1200s/istanza",
+  "date": "2026-08-12",
+  "command": "sat_group.py <g> decide 1200 3",
+  "log": "results/logs/t6_decide.log",
+  "note": "Verdetti CP-SAT (OR-Tools), non ancora certificati indipendentemente (T7: DRAT con cadical+drat-trim).",
+  "results": {
+    "14T30": {"orbits_nontrivial": 50, "clauses": 10134, "verdict": "INFEASIBLE", "solve_s": 0.1},
+    "14T10": {"orbits_nontrivial": 154, "clauses": 159203, "verdict": "INFEASIBLE", "solve_s": 0.6},
+    "14T12": {"orbits_nontrivial": 170, "clauses": 146706, "verdict": "INFEASIBLE", "solve_s": 0.6},
+    "14T6":  {"orbits_nontrivial": 422, "clauses": 1137222, "verdict": "INFEASIBLE", "solve_s": 7.5},
+    "14T2":  {"orbits_nontrivial": 1234, "clauses": 7098740, "verdict": "INFEASIBLE", "solve_s": 74.0}
+  }
+}
