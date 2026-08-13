@@ -33,7 +33,13 @@ transitive cycle-free groups.
   diary and task ledger are in [STATE/](STATE/) (Italian), the constitution in
   [CLAUDE.md](CLAUDE.md).
 
-Status: bootstrap — group census and reduction lemma in progress. Everything
-here is provisional until it passes the project's two-independent-methods
-standard; full English documentation will follow the first decided rung, as in
-the predecessor repository.
+Status: **degree 14 closed and certified** (12 August 2026). The campaign
+completed the census of the 63 transitive groups of degree 14 (26 contain no
+14-cycle), reduced the theorem to five minimal cycle-free instances, and
+decided all five UNSAT with two independent methods (OR-Tools CP-SAT, and
+CaDiCaL with DRAT certificates verified by drat-trim — `s VERIFIED` on all
+five). Certificates: [v1.0.0 release](https://github.com/simone-albanese/frankl-transitive-sat/releases/tag/v1.0.0)
+· [doi:10.5281/zenodo.21920980](https://doi.org/10.5281/zenodo.21920980).
+Degrees 15 and 16 are in the backlog and not yet started; degree 15 interacts
+with the still-open cyclic case Z15 (open problem 1 of the predecessor
+repository).
