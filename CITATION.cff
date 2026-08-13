@@ -1,0 +1,21 @@
+cff-version: 1.2.0
+message: "If you use this work, please cite it as below."
+title: "Frankl's conjecture beyond cyclic symmetry: a SAT-certified theorem for all transitive groups on 14 points"
+authors:
+  - family-names: Albanese
+    given-names: Simone
+type: software
+date-released: 2026-08-12
+version: "1.0.0"
+license: MIT
+doi: 10.5281/zenodo.21920980
+abstract: >-
+  Computer-assisted proof that no non-trivial union-closed family invariant
+  under any transitive permutation group on 14 points violates Frankl's
+  union-closed sets conjecture. A census of the 63 transitive groups of degree
+  14 and a certified minimality reduction collapse the problem to five SAT
+  instances (plus the previously certified cyclic case), each decided by two
+  independent exact methods (OR-Tools CP-SAT and CaDiCaL) with DRAT
+  certificates verified by drat-trim. The campaign was executed autonomously
+  by an AI agent loop built on Anthropic's Claude Code (model Claude Fable 5)
+  under human supervision.
