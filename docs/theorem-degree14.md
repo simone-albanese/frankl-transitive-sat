@@ -51,7 +51,11 @@ unsatisfiable. Each verdict was obtained by **two independent methods**:
 | 14T12 | 1/2[D(7)^2]2    | 196   | 170               | 146,706   | INFEASIBLE  | UNSAT   | s VERIFIED |
 | 14T30 | L(14)=PSL(2,13) | 1092  | 50                | 10,134    | INFEASIBLE  | UNSAT   | s VERIFIED |
 
-CNF files and DRAT certificates: `results/cnf/` (14T2.drat is 3.3 GB).
+CNF files and DRAT certificates: `results/cnf/` (14T2.drat is 3.3 GB);
+xz-compressed copies are published in the
+[v1.0.0 release](https://github.com/simone-albanese/frankl-transitive-sat/releases/tag/v1.0.0)
+and permanently archived at Zenodo
+([doi:10.5281/zenodo.21920980](https://doi.org/10.5281/zenodo.21920980)).
 Full reverification commands: `results/FOUND.md`.
 
 **Conclusion.** Let F be non-trivial, union-closed, G-invariant, G

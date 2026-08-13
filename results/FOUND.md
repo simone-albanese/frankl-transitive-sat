@@ -54,6 +54,8 @@ Fonti: `results/t6_decide.json`, `results/logs/t7_14T*.log`,
 
 I file CNF e i certificati DRAT sono in `results/cnf/` (ATTENZIONE:
 `14T2.drat` pesa 3,3 GB — non aprirlo, solo darlo in pasto a drat-trim).
+Copie compresse xz + SHA256SUMS: release GitHub v1.0.0 e archivio Zenodo
+permanente (DOI 10.5281/zenodo.21920980).
 
 ```bash
 # 1. Riverifica dei certificati esistenti (nessun solver necessario):

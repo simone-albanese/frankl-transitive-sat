@@ -1,6 +1,9 @@
 # Frankl's Conjecture Beyond Cyclic Symmetry
 
-**Work in progress — campaign started 12 August 2026.**
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21920980.svg)](https://doi.org/10.5281/zenodo.21920980)
+
+**Work in progress — campaign started 12 August 2026. Degree 14 is closed
+and certified (see below).**
 
 Goal: decide whether any union-closed family invariant under **any transitive
 permutation group** on 14 (then 15, 16) points violates Frankl's union-closed
@@ -12,6 +15,14 @@ dihedral group $D_7$, or $\mathrm{PSL}(2,13)$ on the projective line — and
 they are exactly what this campaign decides, via the reduction to *minimal*
 transitive cycle-free groups.
 
+- **Degree-14 theorem** (no union-closed family invariant under any
+  transitive group on 14 points violates the conjecture):
+  [docs/theorem-degree14.md](docs/theorem-degree14.md) ·
+  [results/FOUND.md](results/FOUND.md). Proof artifacts (CNF instances +
+  drat-trim–verified DRAT certificates for the five minimal instances) are in
+  the [v1.0.0 release](https://github.com/simone-albanese/frankl-transitive-sat/releases/tag/v1.0.0)
+  and permanently archived at Zenodo:
+  [doi:10.5281/zenodo.21920980](https://doi.org/10.5281/zenodo.21920980).
 - Predecessor (methods, certified Z13/Z14 results, proof artifacts):
   [frankl-cyclic-sat](https://github.com/simone-albanese/frankl-cyclic-sat) ·
   artifacts DOI [10.5281/zenodo.21900943](https://doi.org/10.5281/zenodo.21900943)
