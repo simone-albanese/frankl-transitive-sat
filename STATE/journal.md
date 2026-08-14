@@ -147,3 +147,89 @@ docs, status DONE).
 ## 2026-08-12 14:24 — T8 Teorema grado 14: FOUND.md + docs + DONE
 Scritti results/FOUND.md (enunciato, catena logica, tabella 5 gruppi, comandi di riverifica) e docs/theorem-degree14.md (nota inglese). Dati da t6_decide.json e grep sui log t7_14T*: 5/5 s VERIFIED, DRAT_EXIT=0 su 14T2. status.txt -> DONE. Criterio SUCCESS di GOAL.md soddisfatto (UNSAT taglie >=3 sui 5 minimali, CP-SAT + DRAT verificato).
 Prossimo passo: nessuno automatico; T9 (grado 15) parte solo se l'umano rimette RUN e rilancia il loop.
+
+## 2026-08-13 17:15 — Sessione interattiva: esperimento margine-0 + toolchain PB/LRAT
+Esperimento "margine 0" (nuovo, margin_zero.py, validato su Z7/Z11 rhs=-1
+prima dell'uso): su Z7, Z11, Z13 CP-SAT dice (a) sanity E1a: insieme delle
+parti = testimone margine 0, verificato coi due checker; (b) E1b INFEASIBLE:
+NESSUN'ALTRA famiglia ciclica-invariante ha margine <= 0 (unicita'
+dell'estremale); (c) E2 INFEASIBLE: con taglie >=3 margine minimo >= 1.
+Secondo metodo: cadical+LRAT VERIFIED su 4/6 istanze (Z7/Z11 E1b+E2);
+Z13 E1b/E2 in corso. Log: results/logs/margin0_run.log, results/margin0/.
+Toolchain nuova in tools/: Exact (build ok, OPB nativo + --proof-log),
+VeriPB 3.0.2 (Rust, cargo), lrat-trim 0.2.0, catena cadical --lrat
+--no-binary -> lrat-check VALIDATA (trappola: LRAT binario di default,
+lrat-check dice NOT VERIFIED; sempre --no-binary col lrat-check testuale).
+Gauntlet Exact: Z7/Z11 UNSAT + VeriPB "s VERIFIED UNSATISFIABLE" [M];
+Z13/Z14min3 in corso; OPB Z15min3 in generazione preventiva.
+
+## 2026-08-13 ~19:00 — Checkpoint 60min su Exact/Z14 + avvio sonda sharding Z15
+Collaudo Exact: Z13 PASSATO (s UNSATISFIABLE, prova 3,8 GB in ~25 min).
+Z14min3 senza proof log: oltre 60 min senza verdetto MA progresso misurabile
+(4,4M conflitti) => lasciato correre; la catena lancia Z15 da sola su UNSAT.
+REPRICING onesto: Exact >60x piu' lento di CP-SAT su Z14min3 => Z15
+monolitico via Exact incerto (ore-giorni). Attivata in parallelo Route A:
+results/cnf/z15min3.cnf RIGENERATO BYTE-IDENTICO alla formula congelata del
+repo pubblicato (sha256 e6c732cf... VERIFICATO); shard_probe.py (8 orbite
+s=3 r=15 coeff -9); sonda: 6 shard estremi, cap 30 min/cad, generate-and-
+delete. Log: results/logs/shard_probe.log. Lezione: i verdetti Exact si
+fanno SENZA proof log (Z14 con proof log: 15,5 GB parziali, interrotto).
+
+## 2026-08-13 ~21:30 — Esito sonde Z15: tutte le porte economiche chiuse
+Sonda sharding k=8: 5/6 shard UNSAT in 2-17 s, corner tutto-escluso oltre
+cap 30 min (skew da manuale). Sonda 1-orbita-inclusa: cap sfondato. Sonda
+min4 (taglie>=4): cap sfondato (RSS 4,4 GB). CONCLUSIONE [M]: niente
+decomposizione facile; la durezza e' robusta per CDCL/risoluzione.
+Strade rimaste per Z15: (1) Exact monolitico (Z14 collaudo a 2h35m+ e
+7,9M conflitti; proiezione Z15 ~40h [E, scala CP-SAT x15] > cap 15h del
+watchdog armato); (2) Route B rivisitata: cadical --lrat SENZA cap su piu'
+giorni + verifica LRAT in streaming — RIAPERTA dalla toolchain di oggi (il
+muro storico era la RAM di drat-trim, dissolto; il disco basta: 313 GB);
+(3) cubi profondi con lookahead (march_cu) = infrastruttura futura;
+(4) opzione verdetto-senza-certificato: un terzo solver (es. kissat, mai
+provato su questa formula) + CP-SAT = standard due-metodi.
+NB: NON rilanciare cadical su Z15 con cap breve: stessa versione/opzioni =
+stessa traiettoria del run storico morto a 13h; ha senso solo unbounded.
+Decisione rimandata al mattino con i numeri di Z14/Exact in mano.
+
+## 2026-08-13 ~22:00 — Stop manuale dei run notturni; stato consolidato
+Run Exact Z14min3 terminato dall'esterno dopo 3h09m+ (s UNKNOWN, shutdown
+pulito). DATO CHE RESTA [M]: Exact > 3h09m su Z14min3 senza verdetto (CP-SAT:
+60 s) => scala Exact su queste istanze ~200x CP-SAT; proiezione Z15
+monolitico via Exact: giorni [E]. Z15 mai partito. Nessun processo attivo.
+Collaudo Exact: PASSATO su Z7/Z11 (+VeriPB verified) e Z13; Z14min3
+INTERROTTO (non fallito). Ripresa: vedi menu' tre strade nel journal delle
+21:30 (Route B unbounded con LRAT streaming = favorita; kissat verdetto
+rapido; cubi profondi). Tutti gli artefatti a posto: margin0/ (REPORT+
+SHA256SUMS+6 LRAT), opb/ (z7/z11/z13 con prove, z15min3.opb sha d38dfc29...),
+cnf/ (z15min3.cnf sha e6c732cf... byte-identico al pubblicato, z15min4.cnf).
+
+## 2026-08-13 22:31 — ROUTE B LANCIATA (cadical --lrat unbounded su Z15)
+Driver SGANCIATO (nohup+disown, immune ai cleanup di sessione che stasera
+hanno ucciso due volte i task in background — diagnosi confermata con la
+sessione di pubblicazione, che e' scagionata). scripts/routeB.sh: solver
+pid in STATE/routeB.pid, log results/logs/routeB_z15.log, driver log
+routeB_driver.log con HEARTBEAT orario (RSS/disco/taglia prova). Guardia:
+RAM 9GB, disco min 30GB, NESSUN cap di tempo. A fine corsa: exit 20 =>
+lrat-check automatico in streaming + notifiche macOS a ogni evento.
+Formula: results/cnf/z15min3.cnf (sha e6c732cf..., byte-identica alla
+pubblicata). Prova: TESTO (lrat-trim scartato per la verifica: e' un
+trimmer backward IN MEMORIA, muro RAM reincarnato; lrat-check forward
+streaming e' la catena validata 6/6 oggi). ATTENZIONE: Mac A BATTERIA al
+lancio (97%, ~16h) — SERVE L'ALIMENTATORE per un run multi-giorno.
+
+## 2026-08-14 19:20 — *** Z15 CHIUSO: UNSAT CON CERTIFICATO VERIFICATO ***
+Route B completata. cadical 3.0.1 su results/cnf/z15min3.cnf (sha e6c732cf,
+byte-identica alla formula pubblicata): exit 20 = UNSAT in 73.544,58 s
+(20h26m), max RSS 4,79 GB. Prova LRAT testuale 158.233.546.333 byte (147 GB).
+lrat-check (drat-trim repo): "c VERIFIED" in 1.358,68 s (22,6 min),
+max live clauses 28.850.111 (streaming: RAM ~ formula, non ~ prova).
+STANDARD SUPERATO: CP-SAT INFEASIBLE (modello nativo, 2026-08-11) +
+cadical UNSAT (CNF congelata) + certificato verificato = due metodi
+indipendenti E certificato. OPEN PROBLEM 1 del repo ciclico: RISOLTO.
+Nessuna famiglia union-closed Z15-invariante (taglie>=3) viola Frankl.
+Conseguenza: via libera al teorema di grado 15 transitivo (T9).
+NON CANCELLARE results/cnf/z15.lrat (147 GB): E' il certificato.
+sha256 in calcolo -> results/cnf/z15.lrat.sha256. Da fare: verbale
+results/Z15-CLOSED.md, commit, decisioni di pubblicazione (nuova versione
+Zenodo repo ciclico + aggiornare open-problems.md), archiviazione xz.

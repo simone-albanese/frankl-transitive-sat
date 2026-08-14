@@ -10,10 +10,18 @@ __pycache__/
 # docs/reproducing.md
 tools/
 
-# Large generated artifacts (CNF/DRAT): reproducible, hash-anchored
+# Large generated artifacts (CNF/DRAT/LRAT/OPB): reproducible, hash-anchored
+# (margin-0 hashes in results/margin0/SHA256SUMS.txt; Z15 certificate hash in
+# results/Z15-CLOSED.md — the 147 GB z15.lrat lives on disk / Zenodo only)
 results/*.cnf
 results/*.drat
 results/cnf/
+results/margin0/*.cnf
+results/margin0/*.lrat
+results/opb/
+
+# Runtime state
+STATE/*.pid
 
 # Backup copies
 *.bak-*

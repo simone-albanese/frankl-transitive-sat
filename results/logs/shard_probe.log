@@ -1,0 +1,18 @@
+shard 00000000: results/cnf/shard_00000000.cnf (+8 unit su base 28850111 clausole)
+shard 00000000: exit=0 (1800s)
+shard 11111111: results/cnf/shard_11111111.cnf (+8 unit su base 28850111 clausole)
+shard 11111111: exit=20 (2s)
+shard 10101010: results/cnf/shard_10101010.cnf (+8 unit su base 28850111 clausole)
+shard 10101010: exit=20 (11s)
+shard 01010101: results/cnf/shard_01010101.cnf (+8 unit su base 28850111 clausole)
+shard 01010101: exit=20 (7s)
+shard 11110000: results/cnf/shard_11110000.cnf (+8 unit su base 28850111 clausole)
+shard 11110000: exit=20 (17s)
+shard 00001111: results/cnf/shard_00001111.cnf (+8 unit su base 28850111 clausole)
+shard 00001111: exit=20 (5s)
+PROBE_DONE
+shard 1: results/cnf/probe_incl1.cnf (+1 unit su base 28850111 clausole)
+probe UNA-orbita-inclusa (var4): exit=0 (1800s)
+DIMACS: results/cnf/z15min4.cnf  vars=16856  clauses=28850142  (m=15, min_size=4)
+probe MIN4 (base taglie>=4): exit=0 (1801s)
+PROBE2_DONE

@@ -1,0 +1,4 @@
+OPB: results/opb/z13.opb vars=630 constraints=1863313 (m=13, rhs=-1, min_size=1, excl_full=False)
+c parse time 3.31229
+s UNSATISFIABLE
+OPB: results/opb/z14min3.opb vars=1180 constraints=7320464 (m=14, rhs=-1, min_size=3, excl_full=False)
