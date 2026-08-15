@@ -3,12 +3,11 @@
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21920980.svg)](https://doi.org/10.5281/zenodo.21920980)
 
 **Two computer-assisted theorems: no union-closed family that is symmetric
-under *any* transitive permutation group on 14 — or 15 — points violates
-Frankl's conjecture. The infinitely-many-groups problem is reduced, by short
-minimality lemmas and certified computation, to a handful of SAT instances —
-each decided by two independent exact methods, each carrying a
-machine-checkable proof certificate (LRAT/DRAT), most of them re-verified by a
-formally verified checker (cake_lpr).**
+under *any* transitive permutation group on 14 or 15 points violates Frankl's
+conjecture. The infinitely-many-groups problem is reduced, by short minimality
+lemmas and certified computation, to a handful of SAT instances — each decided
+by two independent exact methods, each carrying a machine-checkable proof
+certificate, most re-verified by a formally verified checker.**
 
 This is the sequel to
 [frankl-cyclic-sat](https://github.com/simone-albanese/frankl-cyclic-sat),

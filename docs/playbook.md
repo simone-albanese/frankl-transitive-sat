@@ -188,11 +188,12 @@ Two decisions ended this campaign well, and both generalize:
   Write this analysis *before* emotional sunk-cost pressure builds; better,
   write the resource model before launching at all.
 - **Unconfirmed results are published as unconfirmed.** Z15 had one solver's
-  INFEASIBLE and no certificate — it is documented everywhere as *not
-  decided to standard*, with the exact input (hash-pinned) so anyone can
+  INFEASIBLE and no certificate — it was documented everywhere as *not
+  decided to standard*, with the exact input (hash-pinned) so anyone could
   finish the job. The alternative — quietly claiming it — would have been
   cheaper and worthless. Honesty converted a failure into "open problem 1"
-  with a costed plan attached.
+  with a costed plan attached — and that published plan is precisely what
+  closed it two days later, on the same machine, with a verified certificate.
 
 Publication mechanics that mattered: certificates too big for git go to a
 Release (compressed) *and* to Zenodo with a DOI; SHA-256 of both original and
