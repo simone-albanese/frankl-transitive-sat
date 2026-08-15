@@ -296,7 +296,7 @@ decisions, not on waiting. Token accounting was not systematically tracked
 (the predecessor's policy, stated in its ai-workflow page); the honest
 proxies are the session counts above — and the fact that the entire
 13-to-15 program, solver time included, ran on one 16 GB laptop and one
-consumer Claude subscription.
+consumer Claude subscription (Max 20×).
 
 The raw diary of both modes is preserved verbatim in
 [STATE/journal.md](STATE/journal.md) (Italian).
