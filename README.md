@@ -261,17 +261,31 @@ Exploratory work continues and is recorded, as always, in the working diary
 
 ## How this was made
 
-The entire campaign — census, lemmas, pipeline generalization, validation,
-five decisions, theorem write-up — was executed autonomously by an AI agent
-loop built on **[Claude Code](https://claude.com/claude-code)** (model pinned
-to Claude Fable 5): **18 short fresh-context sessions in about two and a half
-hours** of wall-clock time on 12 August 2026, under the same constitution,
-resource budgets and independent-verification protocol as the predecessor
-(described in detail in its
-[docs/ai-workflow.md](https://github.com/simone-albanese/frankl-cyclic-sat/blob/main/docs/ai-workflow.md)).
-The human owner chose the target, supervised, and published the artifacts. The
-raw diary is preserved verbatim in [STATE/journal.md](STATE/journal.md)
-(Italian).
+Two working modes, both built on
+**[Claude Code](https://claude.com/claude-code)** (model pinned to Claude
+Fable 5), under the same constitution, resource budgets and
+independent-verification protocol as the predecessor (described in detail in
+its
+[docs/ai-workflow.md](https://github.com/simone-albanese/frankl-cyclic-sat/blob/main/docs/ai-workflow.md)):
+
+- **The degree-14 campaign (12 Aug) ran as an autonomous loop**: census,
+  lemmas, pipeline generalization, validation, five decisions, theorem
+  write-up — **18 short fresh-context sessions in about two and a half
+  hours** of wall-clock time, with the human owner choosing the target and
+  supervising.
+- **Everything after (13–15 Aug) ran as interactive sessions**: the human
+  owner decided at the forks (which route to attempt on Z15, when to stop a
+  run, what to publish) and the agent executed — probing decompositions,
+  building and validating the LRAT/PB toolchain, launching the detached
+  20-hour Route B run that closed Z15 (designed to survive session
+  restarts, with watchdogs and automatic verification), closing degree 15,
+  re-verifying certificates with cake_lpr, and handling translation,
+  archival and publication. At one point two Claude Code sessions worked
+  the repository in parallel, coordinating through messages and the shared
+  state files.
+
+The raw diary of both modes is preserved verbatim in
+[STATE/journal.md](STATE/journal.md) (Italian).
 
 ## Contributing
 
