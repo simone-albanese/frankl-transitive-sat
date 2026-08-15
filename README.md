@@ -110,7 +110,7 @@ of size ≤ 2 conform trivially).
 The full statement, the proof chain and the validation protocol are in
 [docs/theorem-degree14.md](docs/theorem-degree14.md); the theorem record with
 every measured number and re-verification commands is in
-[results/FOUND.md](results/FOUND.md) (Italian).
+[results/FOUND.md](results/FOUND.md).
 
 > **Theorem (degree 15, added 14 Aug 2026).** Every non-trivial union-closed
 > family $F \subseteq \mathcal{P}([15])$ invariant under any transitive

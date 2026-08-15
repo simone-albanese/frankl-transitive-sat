@@ -1,82 +1,84 @@
-# Esperimento "margine 0" — caratterizzazione delle famiglie estremali cicliche
+# The "margin 0" experiment — characterization of the cyclic extremal families
 
-Data: 2026-08-13 · Status: COMPLETO allo standard del progetto
-(due metodi esatti indipendenti + certificato LRAT verificato per ogni
-esito negativo).
+Date: 2026-08-13 · Status: COMPLETE to the project's standard
+(two independent exact methods + a verified LRAT certificate for every
+negative outcome).
 
-## Origine
+## Origin
 
-Nato da un pattern osservato nei dati della campagna ciclica: l'insieme
-delle parti tocca esattamente la soglia della congettura di Frankl
-(margine intero 2·maxfreq − |F| = 0). Domanda: è l'unico a farlo?
+Born from a pattern observed in the data of the cyclic campaign: the power
+set hits the threshold of the Frankl conjecture exactly
+(integer margin 2·maxfreq − |F| = 0). Question: is it the only one that does?
 
-## Risultato
+## Result
 
-**Proposizione (m ∈ {7, 11, 13}).** Sia F una famiglia union-closed
-Z_m-invariante con ∅, [m] ∈ F e almeno un'orbita non banale inclusa.
-Allora:
+**Proposition (m ∈ {7, 11, 13}).** Let F be a union-closed,
+Z_m-invariant family with ∅, [m] ∈ F and at least one nontrivial orbit
+included. Then:
 
-1. **(Unicità dell'estremale)** Se il margine di F è ≤ 0, allora
-   F = P([m]) (l'insieme delle parti intero), e il margine è esattamente 0.
-2. **(Gap nel mondo min-3)** Se inoltre ogni insieme non banale di F ha
-   taglia ≥ 3, allora il margine di F è ≥ 1: nessuna famiglia tocca
-   nemmeno la soglia.
+1. **(Uniqueness of the extremal)** If the margin of F is ≤ 0, then
+   F = P([m]) (the full power set), and the margin is exactly 0.
+2. **(Gap in the min-3 world)** If moreover every nontrivial set of F has
+   size ≥ 3, then the margin of F is ≥ 1: no family even touches the
+   threshold.
 
-In altre parole: sotto simmetria ciclica non solo non esistono
-controesempi (margine ≤ −1, già certificato dalla campagna precedente),
-ma l'unico modo di *toccare* la soglia è prendere tutto, e appena si
-impone la taglia minima 3 si apre un gap di almeno 1.
+In other words: under cyclic symmetry not only are there no
+counterexamples (margin ≤ −1, already certified by the previous campaign),
+but the only way to *touch* the threshold is to take everything, and as
+soon as minimum size 3 is imposed, a gap of at least 1 opens up.
 
-## Metodo (doppio, con certificati)
+## Method (double, with certificates)
 
-Pipeline: `margin_zero.py` — riusa canon_table/build_orbits/build_clauses
-di `sat_cyclic.py` (validata) e `pb_adder.py` per il DIMACS.
-**Validazione preliminare superata**: con rhs=−1 riproduce INFEASIBLE
-sui controlli certificati Z7 e Z11.
+Pipeline: `margin_zero.py` — reuses canon_table/build_orbits/build_clauses
+from `sat_cyclic.py` (validated) and `pb_adder.py` for the DIMACS.
+**Preliminary validation passed**: with rhs=−1 it reproduces INFEASIBLE
+on the certified Z7 and Z11 controls.
 
-Esperimenti per ogni m ∈ {7, 11, 13}:
+Experiments for each m ∈ {7, 11, 13}:
 
-| Esperimento | Vincoli | CP-SAT (met. 1) | cadical (met. 2) | lrat-check |
+| Experiment | Constraints | CP-SAT (method 1) | cadical (method 2) | lrat-check |
 |---|---|---|---|---|
-| E1a sanity | margine ≤ 0 | FEASIBLE: parti, margine 0 | — (testimone) | — |
-| E1b unicità | margine ≤ 0, ≠ parti | **INFEASIBLE** ×3 | **UNSAT** (exit 20) ×3 | **VERIFIED** ×3 |
-| E2 min-3 | margine ≤ 0, taglie ≥ 3 | **INFEASIBLE** ×3 | **UNSAT** (exit 20) ×3 | **VERIFIED** ×3 |
+| E1a sanity | margin ≤ 0 | FEASIBLE: power set, margin 0 | — (witness) | — |
+| E1b uniqueness | margin ≤ 0, ≠ power set | **INFEASIBLE** ×3 | **UNSAT** (exit 20) ×3 | **VERIFIED** ×3 |
+| E2 min-3 | margin ≤ 0, sizes ≥ 3 | **INFEASIBLE** ×3 | **UNSAT** (exit 20) ×3 | **VERIFIED** ×3 |
 
-Il testimone E1a (insieme delle parti: |F| = 2^m, margine 0) è stato
-verificato per ciascun m da ENTRAMBI i checker indipendenti
-(`ucs_core.check_family` + `checker2.verify`), aritmetica su interi.
+The E1a witness (the power set: |F| = 2^m, margin 0) was verified
+for each m by BOTH independent checkers
+(`ucs_core.check_family` + `checker2.verify`), integer arithmetic.
 
-Tempi CP-SAT [M]: Z7 e Z11 < 1 s; Z13 ~16–19 s per esperimento.
-Certificati LRAT: da 5 KB (Z7) a 561 MB (Z13-E1b).
+CP-SAT timings [M]: Z7 and Z11 < 1 s; Z13 ~16–19 s per experiment.
+LRAT certificates: from 5 KB (Z7) to 561 MB (Z13-E1b).
 
-## Artefatti e riverifica
+## Artifacts and re-verification
 
-CNF e certificati in questa cartella; impronte in `SHA256SUMS.txt`.
-Encoding: margine scalato Σ r_O(2s_O−m)x_O ≤ 0 (interi; ∅ e [m]
-si cancellano), non-vuotezza Σx ≥ 1, "≠ parti" = clausola ∨¬x_O.
+CNF files and certificates in this folder; fingerprints in `SHA256SUMS.txt`.
+Encoding: scaled margin Σ r_O(2s_O−m)x_O ≤ 0 (integers; ∅ and [m]
+cancel out), non-emptiness Σx ≥ 1, "≠ power set" = clause ∨¬x_O.
 
 ```bash
-# metodo 1 (CP-SAT), tutti e tre gli esperimenti per m dato:
-$PY margin_zero.py validate      # prima: deve dire [OK]
+# method 1 (CP-SAT), all three experiments for a given m:
+$PY margin_zero.py validate      # first: it must say [OK]
 $PY margin_zero.py run 13 900
 
-# metodo 2 + certificato (esempio Z13-E1b):
+# method 2 + certificate (example Z13-E1b):
 tools/cadical/build/cadical --lrat --no-binary \
     results/margin0/z13_E1b.cnf results/margin0/z13_E1b.lrat   # exit 20
 tools/drat-trim/lrat-check results/margin0/z13_E1b.cnf \
-    results/margin0/z13_E1b.lrat        # cercare "c VERIFIED" nell'output
+    results/margin0/z13_E1b.lrat        # look for "c VERIFIED" in the output
 ```
 
-Trappola nota: cadical scrive LRAT **binario** di default e lrat-check
-testuale risponde "NOT VERIFIED" — usare sempre `--no-binary` (o il
-lrat-trim in tools/ che legge entrambi). Mai fidarsi del solo exit code.
+Known trap: cadical writes **binary** LRAT by default and the textual
+lrat-check answers "NOT VERIFIED" — always use `--no-binary` (or the
+lrat-trim in tools/, which reads both). Never trust the exit code alone.
 
-## Cosa NON copre
+## What this does NOT cover
 
-- m composti (14, 15): non ancora eseguito (fattibile: ~1 min CP-SAT per
-  Z14; Z15 al costo di un decide monolitico).
-- Gruppi transitivi non ciclici: la riformulazione "margine = m·(taglia
-  media − m/2)·|F|/… " vale per ogni transitivo; esperimento analogo
-  possibile con la pipeline group-agnostica (sat_group.py).
-- Nessuna implicazione diretta sulla congettura generale: è una
-  caratterizzazione del caso estremale simmetrico.
+- Composite m (14, 15): not yet run (feasible: ~1 min CP-SAT for
+  Z14; Z15 at the cost of a monolithic decide).
+- Non-cyclic transitive groups: the reformulation "margin = m·(average
+  size − m/2)·|F|/… " holds for every transitive group; an analogous
+  experiment is possible with the group-agnostic pipeline (sat_group.py).
+- No direct implication for the general conjecture: this is a
+  characterization of the symmetric extremal case.
+
+*Originally written in Italian as the campaign's working record; translated to English on 15 Aug 2026 (the Italian original is preserved in git history).*

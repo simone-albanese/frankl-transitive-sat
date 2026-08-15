@@ -1,88 +1,92 @@
-# FOUND — Teorema di grado 14 (risultato negativo di valore)
+# FOUND — The degree-14 theorem (a negative result of value)
 
-Data: 2026-08-12 · Status: SUCCESS secondo GOAL.md ("risultato negativo di
-valore, grado 14"), verificato con metodo indipendente (CP-SAT + DRAT).
+Date: 2026-08-12 · Status: SUCCESS per GOAL.md ("risultato negativo di
+valore, grado 14" — a negative result of value, degree 14), verified with an
+independent method (CP-SAT + DRAT).
 
-## Enunciato
+## Statement
 
-**Teorema.** Ogni famiglia union-closed non banale F ⊆ P([14]) invariante
-sotto un QUALSIASI gruppo di permutazioni transitivo G ≤ S14 soddisfa la
-congettura di Frankl: esiste un elemento contenuto in almeno metà degli
-insiemi di F (in interi: 2·maxfreq ≥ |F|; nessuna famiglia con margine
-2·maxfreq − |F| ≤ −1 esiste).
+**Theorem.** Every nontrivial union-closed family F ⊆ P([14]) invariant
+under ANY transitive permutation group G ≤ S14 satisfies Frankl's
+conjecture: there exists an element contained in at least half of the sets
+of F (in integers: 2·maxfreq ≥ |F|; no family with margin
+2·maxfreq − |F| ≤ −1 exists).
 
-Questo estende oltre i gradi primi il corollario che su 13 punti seguiva da
-Cauchy (caso ciclico Z13/Z14 già chiuso nel repo `frankl-cyclic-sat`,
-DOI 10.5281/zenodo.21900943, con certificati DRAT).
+This extends beyond prime degrees the corollary that on 13 points followed
+from Cauchy (the cyclic case Z13/Z14 was already closed in the
+`frankl-cyclic-sat` repo, DOI 10.5281/zenodo.21900943, with DRAT
+certificates).
 
-## Catena logica
+## Logical chain
 
-1. **Discesa dell'invarianza** (Lemma 1, `docs/notes-minimality.md`):
-   F G-invariante ⟹ F H-invariante per ogni H ≤ G. Quindi un UNSAT su un
-   sottogruppo transitivo H implica UNSAT su ogni sovragruppo G ≥ H.
-2. **Riduzione ai minimali** (`docs/notes-minimality.md`,
-   `results/minimality_scan.json`): ogni transitivo G di grado 14 contiene
-   un transitivo minimale M. Due casi:
-   - G contiene un 14-ciclo ⟹ G ⊇ Z14, caso chiuso dal repo ciclico
-     (Z14 UNSAT taglie ≥ 3, certificato DRAT, DOI sopra);
-   - G senza 14-ciclo ⟹ M è senza 14-ciclo (Lemma 2) e, a meno di
-     coniugio in S14, M è uno dei 5 gruppi della lista sotto
-     (scan certificato: 14T2/6/10/30 minimali certificati; 14T12 incluso
-     conservativamente come UNKNOWN — deciderlo via SAT costa meno che
-     classificarlo, e un UNSAT su di lui copre comunque i suoi sovragruppi).
-   La coniugazione in S14 non cambia l'esito (rilabeling dei punti).
-3. **I 5 gruppi sono tutti UNSAT** per famiglie di taglia ≥ 3 (riduzione
-   Sarvate–Renaud: le taglie ≤ 2 sono banalmente conformi), con DOPPIA
-   verifica indipendente: CP-SAT (OR-Tools, T6) e cadical con certificato
-   DRAT verificato da drat-trim (T7).
+1. **Invariance descent** (Lemma 1, `docs/notes-minimality.md`):
+   F G-invariant ⟹ F H-invariant for every H ≤ G. Hence an UNSAT on a
+   transitive subgroup H implies UNSAT on every overgroup G ≥ H.
+2. **Reduction to the minimal groups** (`docs/notes-minimality.md`,
+   `results/minimality_scan.json`): every transitive G of degree 14 contains
+   a minimal transitive M. Two cases:
+   - G contains a 14-cycle ⟹ G ⊇ Z14, a case closed by the cyclic repo
+     (Z14 UNSAT for sizes ≥ 3, DRAT certificate, DOI above);
+   - G has no 14-cycle ⟹ M has no 14-cycle (Lemma 2) and, up to
+     conjugacy in S14, M is one of the 5 groups in the list below
+     (certified scan: 14T2/6/10/30 certified minimal; 14T12 included
+     conservatively as UNKNOWN — deciding it via SAT costs less than
+     classifying it, and an UNSAT on it covers its overgroups anyway).
+   Conjugation in S14 does not change the outcome (a relabeling of points).
+3. **The 5 groups are all UNSAT** for families of size ≥ 3 (Sarvate–Renaud
+   reduction: sizes ≤ 2 conform trivially), with DOUBLE independent
+   verification: CP-SAT (OR-Tools, T6) and cadical with a DRAT certificate
+   verified by drat-trim (T7).
 
-## Tabella dei 5 gruppi-istanza
+## Table of the 5 group instances
 
-| Gruppo | Nome            | Ordine | Orbite non banali | Clausole  | CP-SAT (T6)        | cadical (T7) | drat-trim (T7)            |
-|--------|-----------------|--------|-------------------|-----------|--------------------|--------------|---------------------------|
-| 14T2   | D_14(14)=[7]2   | 14     | 1234              | 7 098 740 | INFEASIBLE, 74,0 s | UNSAT (exit 20) | s VERIFIED, 2939,8 s   |
-| 14T6   | [2^3]7          | 56     | 422               | 1 137 222 | INFEASIBLE, 7,5 s  | UNSAT (exit 20) | s VERIFIED, 4,0 s      |
-| 14T10  | L_7(14)         | 168    | 154               | 159 203   | INFEASIBLE, 0,6 s  | UNSAT (exit 20) | s VERIFIED, 0,12 s     |
-| 14T12  | 1/2[D(7)^2]2    | 196    | 170               | 146 706   | INFEASIBLE, 0,6 s  | UNSAT (exit 20) | s VERIFIED, 0,21 s     |
-| 14T30  | L(14)=PSL(2,13) | 1092   | 50                | 10 134    | INFEASIBLE, 0,1 s  | UNSAT (exit 20) | s VERIFIED, 0,06 s     |
+| Group  | Name            | Order | Nontrivial orbits | Clauses   | CP-SAT (T6)        | cadical (T7) | drat-trim (T7)            |
+|--------|-----------------|-------|-------------------|-----------|--------------------|--------------|---------------------------|
+| 14T2   | D_14(14)=[7]2   | 14    | 1234              | 7,098,740 | INFEASIBLE, 74.0 s | UNSAT (exit 20) | s VERIFIED, 2,939.8 s  |
+| 14T6   | [2^3]7          | 56    | 422               | 1,137,222 | INFEASIBLE, 7.5 s  | UNSAT (exit 20) | s VERIFIED, 4.0 s      |
+| 14T10  | L_7(14)         | 168   | 154               | 159,203   | INFEASIBLE, 0.6 s  | UNSAT (exit 20) | s VERIFIED, 0.12 s     |
+| 14T12  | 1/2[D(7)^2]2    | 196   | 170               | 146,706   | INFEASIBLE, 0.6 s  | UNSAT (exit 20) | s VERIFIED, 0.21 s     |
+| 14T30  | L(14)=PSL(2,13) | 1092  | 50                | 10,134    | INFEASIBLE, 0.1 s  | UNSAT (exit 20) | s VERIFIED, 0.06 s     |
 
-Fonti: `results/t6_decide.json`, `results/logs/t7_14T*.log`,
-`STATE/census14.json` (63 transitivi di grado 14, 26 senza 14-ciclo),
-`results/minimality_scan.json`.
+Sources: `results/t6_decide.json`, `results/logs/t7_14T*.log`,
+`STATE/census14.json` (63 transitive groups of degree 14, 26 without a
+14-cycle), `results/minimality_scan.json`.
 
-## Come riverificare
+## How to re-verify
 
-I file CNF e i certificati DRAT sono in `results/cnf/` (ATTENZIONE:
-`14T2.drat` pesa 3,3 GB — non aprirlo, solo darlo in pasto a drat-trim).
-Copie compresse xz + SHA256SUMS: release GitHub v1.0.0 e archivio Zenodo
-permanente (DOI 10.5281/zenodo.21920980).
+The CNF files and DRAT certificates are in `results/cnf/` (WARNING:
+`14T2.drat` weighs 3.3 GB — do not open it, only feed it to drat-trim).
+xz-compressed copies + SHA256SUMS: GitHub release v1.0.0 and permanent
+Zenodo archive (DOI 10.5281/zenodo.21920980).
 
 ```bash
-# 1. Riverifica dei certificati esistenti (nessun solver necessario):
-#    exit code 0 e riga "s VERIFIED" = certificato valido.
-drat-trim results/cnf/14T30.cnf results/cnf/14T30.drat   # ~0,1 s
-drat-trim results/cnf/14T12.cnf results/cnf/14T12.drat   # ~0,2 s
-drat-trim results/cnf/14T10.cnf results/cnf/14T10.drat   # ~0,1 s
+# 1. Re-verify the existing certificates (no solver needed):
+#    exit code 0 and the line "s VERIFIED" = valid certificate.
+drat-trim results/cnf/14T30.cnf results/cnf/14T30.drat   # ~0.1 s
+drat-trim results/cnf/14T12.cnf results/cnf/14T12.drat   # ~0.2 s
+drat-trim results/cnf/14T10.cnf results/cnf/14T10.drat   # ~0.1 s
 drat-trim results/cnf/14T6.cnf  results/cnf/14T6.drat    # ~4 s
 drat-trim results/cnf/14T2.cnf  results/cnf/14T2.drat    # ~50 min
 
-# 2. Rigenerazione da zero dei CNF (encoder del repo) e nuovo run:
-#    exit 20 = UNSAT (atteso). $PY = python del venv (STATE/hardware.env).
-$PY dump_dimacs_group.py <gruppo> 3 results/cnf/<gruppo>.cnf
-cadical results/cnf/<gruppo>.cnf results/cnf/<gruppo>.drat  # exit 20
+# 2. Regenerate the CNFs from scratch (the repo's encoder) and rerun:
+#    exit 20 = UNSAT (expected). $PY = the venv's python (STATE/hardware.env).
+$PY dump_dimacs_group.py <group> 3 results/cnf/<group>.cnf
+cadical results/cnf/<group>.cnf results/cnf/<group>.drat  # exit 20
 
-# 3. Controllo indipendente CP-SAT:
-$PY sat_group.py <gruppo> decide 1200 3        # atteso: INFEASIBLE
+# 3. Independent CP-SAT check:
+$PY sat_group.py <group> decide 1200 3        # expected: INFEASIBLE
 
-# 4. Sanity dei tool (pipeline validata sui controlli PRIMA della produzione):
-#    Z7 e Z11 INFEASIBLE, DIMACS byte-identici a quelli del repo ciclico
+# 4. Tool sanity (pipeline validated on the controls BEFORE production):
+#    Z7 and Z11 INFEASIBLE, DIMACS byte-identical to the cyclic repo's
 #    (results/logs/t7_validate.log, results/logs/t5_probe.log).
 ```
 
-Avvertenze note: i WARNING "duplicate literal" di drat-trim sono benigni;
-l'aritmetica dei verdetti è tutta su interi (margine = 2·maxfreq − |F|).
+Known caveats: drat-trim's "duplicate literal" WARNINGs are benign; all
+verdict arithmetic is over integers (margin = 2·maxfreq − |F|).
 
-## Cosa NON copre questo risultato
+## What this result does NOT cover
 
-- Gradi 15 e 16: nel backlog (T9+), non ancora iniziati.
-- Gruppi NON transitivi: fuori scope di GOAL.md.
+- Degrees 15 and 16: in the backlog (T9+), not yet started.
+- NON-transitive groups: out of scope of GOAL.md.
+
+*Originally written in Italian as the campaign's working record; translated to English on 15 Aug 2026 (the Italian original is preserved in git history).*

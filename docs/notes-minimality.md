@@ -1,119 +1,122 @@
-# Nota — Lemma di minimalità per il grado 14
+# Note — Minimality lemma for degree 14
 
-Obiettivo: ridurre la decisione "esiste F union-closed G-invariante con
-margine ≤ −1, per G transitivo di grado 14 senza 14-ciclo" (26 gruppi del
-census, `STATE/census14.json`) a una **lista corta di gruppi-istanza**.
+Goal: reduce the decision "does there exist a union-closed G-invariant F with
+margin ≤ −1, for G transitive of degree 14 with no 14-cycle" (26 groups of the
+census, `STATE/census14.json`) to a **short list of instance groups**.
 
-Convenzioni: punti = {0,…,13}; F ⊆ P([14]); G ≤ S14 transitivo;
-"senza ciclo" = nessun elemento di G ha cycle type (14).
+Conventions: points = {0,…,13}; F ⊆ P([14]); G ≤ S14 transitive;
+"cycle-free" = no element of G has cycle type (14).
 
-## Lemma 1 (discesa dell'invarianza)
-Se F è G-invariante e H ≤ G, allora F è H-invariante.
-*Dim.* Ogni h ∈ H sta in G. ∎
+## Lemma 1 (descent of invariance)
+If F is G-invariant and H ≤ G, then F is H-invariant.
+*Proof.* Every h ∈ H lies in G. ∎
 
-## Lemma 2 (ereditarietà del no-ciclo)
-Se H ≤ G e H contiene un 14-ciclo, quel 14-ciclo sta in G.
-Quindi ogni sottogruppo (in particolare ogni sottogruppo transitivo) di un
-gruppo senza ciclo è senza ciclo. ∎
+## Lemma 2 (heredity of cycle-freeness)
+If H ≤ G and H contains a 14-cycle, that 14-cycle lies in G.
+Hence every subgroup (in particular every transitive subgroup) of a
+cycle-free group is cycle-free. ∎
 
-## Lemma 3 (ordine dei transitivi)
-H transitivo di grado 14 ⇒ 14 | |H| (orbita-stabilizzatore). In particolare
-H contiene un elemento di ordine 7 (Cauchy). ∎
+## Lemma 3 (order of transitive groups)
+H transitive of degree 14 ⇒ 14 | |H| (orbit–stabilizer). In particular
+H contains an element of order 7 (Cauchy). ∎
 
-## Lemma 4 (2-generazione dei minimali, caso fpf)
-Sia M ≤ S14 **transitivo minimale** (nessun sottogruppo proprio transitivo)
-e sia a ∈ M di ordine 7 **senza punti fissi** (cycle type (7,7)).
-Allora M = ⟨a, x⟩ per qualche x ∈ M.
-*Dim.* Le orbite di ⟨a⟩ sono due 7-insiemi O1, O2. M transitivo ⇒ esiste
-x ∈ M con x(p) ∈ O2 per qualche p ∈ O1. L'orbita di p sotto ⟨a,x⟩ contiene
-O1 (via a) e x(p) ∈ O2, dunque tutta O2 (via a): ⟨a,x⟩ è transitivo.
-Per minimalità M = ⟨a,x⟩. ∎
+## Lemma 4 (2-generation of the minimal groups, fpf case)
+Let M ≤ S14 be **minimally transitive** (no proper transitive subgroup)
+and let a ∈ M be of order 7 **with no fixed points** (cycle type (7,7)).
+Then M = ⟨a, x⟩ for some x ∈ M.
+*Proof.* The orbits of ⟨a⟩ are two 7-sets O1, O2. M transitive ⇒ there exists
+x ∈ M with x(p) ∈ O2 for some p ∈ O1. The orbit of p under ⟨a,x⟩ contains
+O1 (via a) and x(p) ∈ O2, hence all of O2 (via a): ⟨a,x⟩ is transitive.
+By minimality M = ⟨a,x⟩. ∎
 
-Nota: se OGNI elemento di ordine 7 di G è fpf (flag `order7_all_fpf` nello
-scan), il Lemma 4 si applica a ogni transitivo minimale M ≤ G (l'elemento di
-ordine 7 di M, Lemma 3, è fpf perché elemento di G).
+Note: if EVERY element of order 7 of G is fpf (flag `order7_all_fpf` in the
+scan), Lemma 4 applies to every minimally transitive M ≤ G (the order-7
+element of M, Lemma 3, is fpf because it is an element of G).
 
-## Criterio computazionale di minimalità (certificato completo)
-Sia G enumerabile con tutti i 7-elementi fpf. Siano a_1,…,a_k rappresentanti
-delle classi di G-coniugio degli elementi di ordine 7. Allora:
+## Computational minimality criterion (complete certificate)
+Let G be enumerable with all its 7-elements fpf. Let a_1,…,a_k be
+representatives of the G-conjugacy classes of the elements of order 7. Then:
 
-  G ha un sottogruppo transitivo proprio ⟺
-  ∃ i, ∃ x ∈ G tali che ⟨a_i, x⟩ è transitivo e proprio.
+  G has a proper transitive subgroup ⟺
+  ∃ i, ∃ x ∈ G such that ⟨a_i, x⟩ is transitive and proper.
 
-*Dim.* (⇐) ovvio. (⇒) H < G transitivo contiene un transitivo minimale M
-(catena discendente finita), M < G. M contiene b di ordine 7 (Lemma 3),
-b = g a_i g⁻¹ per qualche i e g ∈ G. Allora g⁻¹Mg è transitivo minimale,
-contiene a_i, e per Lemma 4 g⁻¹Mg = ⟨a_i, x⟩, proprio. ∎
+*Proof.* (⇐) obvious. (⇒) H < G transitive contains a minimally transitive M
+(finite descending chain), M < G. M contains b of order 7 (Lemma 3),
+b = g a_i g⁻¹ for some i and g ∈ G. Then g⁻¹Mg is minimally transitive,
+contains a_i, and by Lemma 4 g⁻¹Mg = ⟨a_i, x⟩, proper. ∎
 
-Quindi il loop esaustivo "per ogni rappresentante a_i, per ogni x ∈ G:
-⟨a_i,x⟩ transitivo ⇒ deve chiudere su tutto G" **certifica** la minimalità.
-(Trucco di costo: se la chiusura BFS supera |G|/2, per Lagrange è = G.)
+Hence the exhaustive loop "for every representative a_i, for every x ∈ G:
+⟨a_i,x⟩ transitive ⇒ it must close over all of G" **certifies** minimality.
+(Cost trick: if the BFS closure exceeds |G|/2, by Lagrange it equals G.)
 
-## Teorema di copertura (la riduzione)
-Sia MIN l'insieme dei gruppi del census senza ciclo che sono transitivi
-minimali. Se per ogni M ∈ MIN non esiste F union-closed M-invariante con
-margine ≤ −1, allora non esiste per NESSUNO dei 26 gruppi senza ciclo.
+## Covering theorem (the reduction)
+Let MIN be the set of the cycle-free groups of the census that are minimally
+transitive. If for every M ∈ MIN there is no union-closed M-invariant F with
+margin ≤ −1, then there is none for ANY of the 26 cycle-free groups.
 
-*Dim.* Sia F un controesempio G-invariante, G senza ciclo. G contiene un
-transitivo minimale M₀ (catena finita); M₀ è senza ciclo (Lemma 2) e
-transitivo, quindi coniugato in S14 a un M ∈ MIN del census: M = s M₀ s⁻¹.
-F è M₀-invariante (Lemma 1); allora F^s = {s(A) : A ∈ F} è M-invariante,
-union-closed, con gli stessi |F|, stesse frequenze a permutazione dei punti,
-stesso margine. Contraddizione. ∎
+*Proof.* Let F be a G-invariant counterexample, G cycle-free. G contains a
+minimally transitive M₀ (finite chain); M₀ is cycle-free (Lemma 2) and
+transitive, hence conjugate in S14 to an M ∈ MIN of the census: M = s M₀ s⁻¹.
+F is M₀-invariant (Lemma 1); then F^s = {s(A) : A ∈ F} is M-invariant,
+union-closed, with the same |F|, the same frequencies up to a permutation of
+the points, the same margin. Contradiction. ∎
 
-**Conseguenza pratica:** basta decidere (UNSAT/SAT) i soli gruppi di MIN.
+**Practical consequence:** it suffices to decide (UNSAT/SAT) only the groups
+of MIN.
 
-## Fatti già acquisiti sui casi estremi
-- Un sottogruppo regolare di ordine 14 è C14 o D7. C14 regolare = ⟨14-ciclo⟩:
-  impossibile nei senza-ciclo. Quindi "sottogruppo transitivo di ordine 14"
-  ⟺ "D7 regolare" (ogni transitivo di ordine 14 su 14 punti è regolare).
-- In un D7 regolare le involuzioni hanno tipo 2^7 (dispari!) ⇒ nessun
-  sottogruppo di A14 contiene un D7 regolare. In particolare 14T62 = A14 e
-  14T59 ≤ A14 non sono coperti da D7: servono testimoni di sottogruppi
-  transitivi propri più grandi (lo scan li costruisce esplicitamente:
-  per A14 i generatori di 14T30 = PSL(2,13), tutti pari; per 14T59 un
-  ⟨(7,7)-elemento, scambio-blocchi pari⟩ dentro (S7≀S2)∩A14).
-- 14T2 = D7 è transitivo minimale (ordine 14: i sottogruppi propri hanno
-  ordine ≤ 7, non divisibile per 14, Lemma 3).
-- 14T30 = PSL(2,13): le involuzioni fissano 2 punti (q=13 ≡ 1 mod 4), quindi
-  nessun D7 regolare; atteso minimale (lo scan lo certifica o lo smentisce).
+## Facts already established about the extreme cases
+- A regular subgroup of order 14 is C14 or D7. Regular C14 = ⟨14-cycle⟩:
+  impossible in the cycle-free groups. Hence "transitive subgroup of order 14"
+  ⟺ "regular D7" (every transitive group of order 14 on 14 points is regular).
+- In a regular D7 the involutions have type 2^7 (odd!) ⇒ no
+  subgroup of A14 contains a regular D7. In particular 14T62 = A14 and
+  14T59 ≤ A14 are not covered by D7: witnesses of larger proper transitive
+  subgroups are needed (the scan constructs them explicitly:
+  for A14 the generators of 14T30 = PSL(2,13), all even; for 14T59 a
+  ⟨(7,7)-element, even block-swap⟩ inside (S7≀S2)∩A14).
+- 14T2 = D7 is minimally transitive (order 14: the proper subgroups have
+  order ≤ 7, not divisible by 14, Lemma 3).
+- 14T30 = PSL(2,13): the involutions fix 2 points (q=13 ≡ 1 mod 4), hence
+  no regular D7; expected minimal (the scan certifies or refutes it).
 
-## Cosa produce lo scan (`scripts/minimality_scan.py`)
-Per ciascuno dei 26: ordine, n. orbite di P([14]) via Burnside
-(1/|G|)·Σ_g 2^{c(g)} (solo enumerabili), flag `order7_all_fpf`,
-ed esattamente uno tra:
-- `minimal_certified: true` (criterio esaustivo sopra), oppure
-- `witness`: generatori espliciti di un sottogruppo transitivo proprio
-  (⇒ non minimale, coperto ricorsivamente dalla catena discendente), oppure
-- `UNKNOWN` (gruppo grande, campionamento senza esito) ⇒ task di follow-up.
+## What the scan produces (`scripts/minimality_scan.py`)
+For each of the 26: order, number of orbits of P([14]) via Burnside
+(1/|G|)·Σ_g 2^{c(g)} (enumerable groups only), flag `order7_all_fpf`,
+and exactly one of:
+- `minimal_certified: true` (exhaustive criterion above), or
+- `witness`: explicit generators of a proper transitive subgroup
+  (⇒ not minimal, covered recursively by the descending chain), or
+- `UNKNOWN` (large group, sampling inconclusive) ⇒ follow-up task.
 
-La **lista finale dei gruppi-istanza** = {certificati minimali} ∪ {UNKNOWN
-residui dopo i follow-up}, ordinata per numero di orbite (Burnside).
+The **final list of instance groups** = {certified minimal} ∪ {UNKNOWN
+left over after the follow-ups}, ordered by number of orbits (Burnside).
 
-Riferimento da verificare (task separato, non bloccante): arXiv:1701.02374
-sui gruppi transitivi minimali — utile come conferma esterna della lista.
+Reference to verify (separate task, non-blocking): arXiv:1701.02374
+on minimally transitive groups — useful as external confirmation of the list.
 
-Sanity attesi: D7 regolare ≈ 1236 orbite ((2^14 + 6·2^2 + 7·2^7)/14 = 1236);
-PSL(2,13) ≈ 52 orbite (calcolo a mano dalle classi). Se lo scan non
-riproduce questi due numeri, c'è un bug nello scan.
+Expected sanity checks: regular D7 ≈ 1236 orbits ((2^14 + 6·2^2 + 7·2^7)/14 = 1236);
+PSL(2,13) ≈ 52 orbits (hand computation from the classes). If the scan does
+not reproduce these two numbers, there is a bug in the scan.
 
-## ESITO (2026-08-12, `results/minimality_scan.json`)
-Sanity D7=1236 e PSL(2,13)=52 riprodotti. Lista finale dei gruppi-istanza
-(copertura valida per tutti i 26 senza ciclo — i NOT_MINIMAL hanno tutti
-testimone esplicito verificato):
+## OUTCOME (2026-08-12, `results/minimality_scan.json`)
+Sanity checks D7=1236 and PSL(2,13)=52 reproduced. Final list of instance
+groups (coverage valid for all 26 cycle-free groups — the NOT_MINIMAL ones
+all have an explicit verified witness):
 
-| gruppo | ordine | orbite (Burnside) | stato |
+| group | order | orbits (Burnside) | status |
 |---|---|---|---|
-| 14T2 = D7 regolare | 14 | 1236 | minimale certificato |
-| 14T6 = [2^3]7 | 56 | 424 | minimale certificato |
-| 14T10 = L_7(14) | 168 | 156 | minimale certificato |
-| 14T12 = 1/2[D(7)^2]2 | 196 | 172 | UNKNOWN (incluso per prudenza)¹ |
-| 14T30 = PSL(2,13) | 1092 | 52 | minimale certificato |
+| 14T2 = regular D7 | 14 | 1236 | certified minimal |
+| 14T6 = [2^3]7 | 56 | 424 | certified minimal |
+| 14T10 = L_7(14) | 168 | 156 | certified minimal |
+| 14T12 = 1/2[D(7)^2]2 | 196 | 172 | UNKNOWN (included out of caution)¹ |
+| 14T30 = PSL(2,13) | 1092 | 52 | certified minimal |
 
-¹ 14T12 ha 7-elementi con punti fissi: il criterio del Lemma 4 non si
-applica. Nessun ⟨a,x⟩ transitivo proprio esiste (verifica su TUTTI gli x);
-potrebbe essere minimale oppure avere sottogruppi transitivi ≥3-generati con
-7-elementi tutti non-fpf. Includerlo nella lista è comunque corretto
-(sovrainsieme di MIN); ha solo 172 orbite, deciderlo via SAT costa poco.
-14T46 (fpf, ordine 5040) risolto con ricerca esaustiva post-scan:
-NOT_MINIMAL, testimone di ordine 42 (`results/logs/t46_exhaustive.log`).
+¹ 14T12 has 7-elements with fixed points: the criterion of Lemma 4 does not
+apply. No proper transitive ⟨a,x⟩ exists (checked over ALL x);
+it could be minimal, or it could have ≥3-generated transitive subgroups whose
+7-elements are all non-fpf. Including it in the list is correct either way
+(a superset of MIN); it has only 172 orbits, deciding it via SAT is cheap.
+14T46 (fpf, order 5040) resolved by exhaustive post-scan search:
+NOT_MINIMAL, witness of order 42 (`results/logs/t46_exhaustive.log`).
+
+*Originally written in Italian as the campaign's working record; translated to English on 15 Aug 2026 (the Italian original is preserved in git history).*

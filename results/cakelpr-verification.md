@@ -1,99 +1,103 @@
-# Verifica formalmente verificata dei certificati LRAT (cake_lpr)
+# Formally verified checking of the LRAT certificates (cake_lpr)
 
-Data: 2026-08-14 sera. Obiettivo: restringere la base di fiducia dei
-risultati eliminando il verificatore non verificato (`lrat-check`, C
-artigianale) come anello debole: ogni certificato LRAT del progetto viene
-riverificato con **cake_lpr**, un checker la cui correttezza è un teorema
-dimostrato a macchina (HOL4) che copre il *binario compilato* (compilatore
-CakeML, a sua volta verificato). Risolve l'open problem 5 del repo
-ciclico per la parte LRAT — reso economico dal fatto che, dopo la lezione
-Z15, i certificati nuovi nascono già in LRAT (niente conversione).
+Date: evening of 2026-08-14. Goal: shrink the trusted base of the
+results by eliminating the unverified checker (`lrat-check`, hand-written
+C) as the weak link: every LRAT certificate in the project is re-verified
+with **cake_lpr**, a checker whose correctness is a machine-checked
+theorem (HOL4) that covers the *compiled binary* (CakeML compiler, itself
+verified). This resolves open problem 5 of the cyclic repo for the LRAT
+part — made cheap by the fact that, after the Z15 lesson, new
+certificates are born directly in LRAT (no conversion).
 
-## Provenienza e build dello strumento
+## Tool provenance and build
 
-- Repo: `github.com/tanyongkiam/cake_lpr` (clonato in `tools/cake_lpr`),
-  che dichiara i commit HOL4/CakeML di generazione; gli assembly
-  pre-generati combaciano con le impronte dichiarate nel repo
+- Repo: `github.com/tanyongkiam/cake_lpr` (cloned into `tools/cake_lpr`),
+  which declares the HOL4/CakeML commits used for generation; the
+  pre-generated assembly files match the fingerprints declared in the repo
   (`cake_lpr.sha256`): `cake_lpr_arm8.S` sha256 `95b64883…`.
-- Build NATIVA arm64 su M4: `make cake_lpr_arm8` (niente Rosetta).
-- Taglie heap/stack: dal luglio 2026 si passano da riga di comando
-  (`--CML_HEAP_SIZE=<MB>`), non più via variabili d'ambiente.
+- NATIVE arm64 build on the M4: `make cake_lpr_arm8` (no Rosetta).
+- Heap/stack sizes: since July 2026 they are passed on the command line
+  (`--CML_HEAP_SIZE=<MB>`), no longer via environment variables.
 
-## Collaudo (protocollo: mai fidarsi di uno strumento non collaudato)
+## Shakedown tests (protocol: never trust an untested tool)
 
-1. Esempio del repo (`example.cnf` + `example.lpr`): `s VERIFIED UNSAT` ✓
-2. **Controllo negativo 1** — certificato 15T26 TRONCATO: respinto
+1. Repo example (`example.cnf` + `example.lpr`): `s VERIFIED UNSAT` ✓
+2. **Negative control 1** — TRUNCATED 15T26 certificate: rejected
    ("Checking failed … failed to parse line") ✓
-3. **Controllo negativo 2** — certificato 15T26 con un letterale NEGATO
-   a metà file (riga 20717, 59 → −59): respinto ("clause index has no
+3. **Negative control 2** — 15T26 certificate with one literal NEGATED
+   mid-file (line 20717, 59 → −59): rejected ("clause index has no
    reduction sequence") ✓
-4. **Trappola confermata**: l'exit code è 0 anche sui fallimenti — il
-   verdetto va letto SOLO dalla riga `s VERIFIED UNSAT` (stessa igiene
-   già in uso con drat-trim/lrat-check).
+4. **Trap confirmed**: the exit code is 0 even on failures — the
+   verdict must be read ONLY from the `s VERIFIED UNSAT` line (same
+   hygiene already in use with drat-trim/lrat-check).
 
-## Esiti (misurati su M4, macchina scarica)
+## Results (measured on the M4, machine otherwise idle)
 
-| certificato | contenuto | cake_lpr | tempo | RSS max |
+| certificate | contents | cake_lpr | time | max RSS |
 |---|---|---|---|---|
-| 15T26.lrat (3,9 MB) | grado 15, [3⁴]5 | **s VERIFIED UNSAT** | 0,3 s | 0,7 GB |
-| 15T9.lrat (55 MB) | grado 15, [5²]3 | **s VERIFIED UNSAT** | 4,0 s | 3,0 GB |
-| 15T5.lrat (162 MB) | grado 15, A₅ | **s VERIFIED UNSAT** | 9,1 s | 3,5 GB |
-| margin0: z7_E1b, z7_E2, z11_E1b, z11_E2, z13_E1b, z13_E2 | unicità dell'insieme delle parti a margine ≤ 0 | **6/6 s VERIFIED UNSAT** | < 1 s l'uno | — |
-| z15.lrat (147 GB) | Z15 ciclico | **NON COMPLETATO: heap esaurito** | 3 h 10 m | 6,5 GB RSS (footprint 12,9 GB) |
+| 15T26.lrat (3.9 MB) | degree 15, [3⁴]5 | **s VERIFIED UNSAT** | 0.3 s | 0.7 GB |
+| 15T9.lrat (55 MB) | degree 15, [5²]3 | **s VERIFIED UNSAT** | 4.0 s | 3.0 GB |
+| 15T5.lrat (162 MB) | degree 15, A₅ | **s VERIFIED UNSAT** | 9.1 s | 3.5 GB |
+| margin0: z7_E1b, z7_E2, z11_E1b, z11_E2, z13_E1b, z13_E2 | uniqueness of the power set at margin ≤ 0 | **6/6 s VERIFIED UNSAT** | < 1 s each | — |
+| z15.lrat (147 GB) | cyclic Z15 | **NOT COMPLETED: heap exhausted** | 3 h 10 m | 6.5 GB RSS (footprint 12.9 GB) |
 
-## Esito Z15 (2026-08-15, 01:05): limite di risorse, NON un verdetto negativo
+## Z15 outcome (2026-08-15, 01:05): a resource limit, NOT a negative verdict
 
 Run `scripts/cakelpr_z15.sh` (2026-08-14 21:57 → 2026-08-15 01:05,
-heap CakeML 12 GB): terminato con **"CakeML heap space exhausted"**
-dopo 11.393 s, alla stima [E, da 12 MB/s misurati via proc_pidfdinfo]
-dell'80–85% del file. Interpretazione onesta:
+CakeML heap 12 GB): terminated with **"CakeML heap space exhausted"**
+after 11,393 s, at an estimated [E, from 12 MB/s measured via
+proc_pidfdinfo] 80–85% of the file. Honest interpretation:
 
-- **Non dice nulla contro il certificato**: z15.lrat resta VERIFICATO
-  dal checker streaming `lrat-check` ("c VERIFIED", 22,6 min, verbale
-  Z15-CLOSED.md). Il fallimento è del checker verificato, per memoria.
-- **Causa quantificata [M/E]**: la prova tiene vive fino a 28.850.111
-  clausole (misura di lrat-check); la rappresentazione CakeML costa
-  ~4–6× quella C e il GC a copia raddoppia il fabbisogno → servono
-  ~15–25 GB di heap: una macchina da 16 GB fisici è sotto la soglia
-  per il check monolitico. I 9 certificati fino a 162 MB (grado 15 +
-  margin0) NON hanno questo problema: 9/10 VERIFICATI da cake_lpr.
-- Lezione strumenti: throughput reale 12 MB/s = ~10× lrat-check
-  (l'estrapolazione 2,3× dai certificati piccoli era sbagliata di 4×).
+- **It says nothing against the certificate**: z15.lrat remains VERIFIED
+  by the streaming checker `lrat-check` ("c VERIFIED", 22.6 min,
+  Z15-CLOSED.md record). The failure is the verified checker's, due to
+  memory.
+- **Quantified cause [M/E]**: the proof keeps up to 28,850,111
+  clauses alive (measured by lrat-check); the CakeML representation costs
+  ~4–6× the C one and the copying GC doubles the requirement → some
+  ~15–25 GB of heap are needed: a machine with 16 GB of physical RAM is
+  below the threshold for the monolithic check. The 9 certificates up to
+  162 MB (degree 15 + margin0) do NOT have this problem: 9/10 VERIFIED
+  by cake_lpr.
+- Tooling lesson: real throughput 12 MB/s = ~10× lrat-check
+  (the 2.3× extrapolation from the small certificates was off by 4×).
 
-## Strade per completare il 10/10 (decisione umana)
+## Paths to complete the 10/10 (human decision)
 
-1. **Macchina più grande** (la via del progetto cake_lpr stesso: il
-   loro Makefile prevede heap da 64 GB): un'istanza cloud da 64 GB per
-   ~4–6 h di run. Costo: pochi euro + setup; rischio basso.
-2. **Modalità compositiva di cake_lpr** (intervalli i–j + summary +
-   `-check` di copertura): fatta apposta per prove enormi su RAM
-   limitata; richiede studio del formato e uno script di split
-   (~mezza giornata di lavoro); tutto resta su questo Mac.
-3. **Heap 14–15 GB su questo Mac**: probabilità concreta di nuovo
-   esaurimento (fabbisogno stimato sopra i 15 GB) + swap/crawl.
-   Sconsigliata: costo alto, esito incerto.
-4. **Accettare 9/10** e dichiarare il limite nel paper: Z15 resta
-   coperto da lrat-check; il perimetro cake_lpr copre tutto il resto.
-   Già scientificamente onesto e pubblicabile.
+1. **A bigger machine** (the route of the cake_lpr project itself: their
+   Makefile provides for a 64 GB heap): a 64 GB cloud instance for a
+   ~4–6 h run. Cost: a few euros + setup; low risk.
+2. **cake_lpr's compositional mode** (intervals i–j + summary + coverage
+   `-check`): built precisely for huge proofs on limited RAM; requires
+   studying the format and a split script (~half a day of work);
+   everything stays on this Mac.
+3. **14–15 GB heap on this Mac**: concrete probability of another
+   exhaustion (estimated requirement above 15 GB) + swap/crawl.
+   Not recommended: high cost, uncertain outcome.
+4. **Accept 9/10** and state the limit in the paper: Z15 remains
+   covered by lrat-check; the cake_lpr perimeter covers everything else.
+   Already scientifically honest and publishable.
 
-## Cosa cambia nella base di fiducia
+## What changes in the trusted base
 
-Prima: generatore di formule (validato con doppio metodo e collaudi) +
-solver (non fidato: produce certificati) + **lrat-check (C non
-verificato, fidato ciecamente)**.
-Dopo: il terzo anello sparisce — resta da fidarsi solo del generatore di
-formule (~60 righe, mitigato dai due metodi indipendenti) e del nucleo di
-HOL4. I certificati di grado 14 (DRAT, non LRAT) non sono coperti da
-questo passaggio: servirebbe rigenerarli in LRAT o farli convertire da
-drat-trim — possibile estensione, costo ~1–2 h [E].
+Before: formula generator (validated with the double method and shakedown
+tests) + solver (untrusted: it produces certificates) + **lrat-check
+(unverified C, trusted blindly)**.
+After: the third link disappears — all that remains to trust is the
+formula generator (~60 lines, mitigated by the two independent methods)
+and the HOL4 kernel. The degree-14 certificates (DRAT, not LRAT) are not
+covered by this step: they would need to be regenerated in LRAT or
+converted by drat-trim — a possible extension, cost ~1–2 h [E].
 
-## Come riverificare
+## How to re-verify
 
 ```bash
 cd tools/cake_lpr && shasum -a 256 -c cake_lpr.sha256 && make cake_lpr_arm8
 cd ../.. && for g in 15T5 15T9 15T26; do
   tools/cake_lpr/cake_lpr results/cnf/$g.cnf results/cnf/$g.lrat
-done   # atteso: "s VERIFIED UNSAT" ×3 (verdetto dalla riga, NON dall'exit code)
+done   # expected: "s VERIFIED UNSAT" ×3 (verdict from the line, NOT from the exit code)
 tools/cake_lpr/cake_lpr --CML_HEAP_SIZE=12288 --CML_STACK_SIZE=4096 \
   results/cnf/z15min3.cnf results/cnf/z15.lrat   # ~1 h
 ```
+
+*Originally written in Italian as the campaign's working record; translated to English on 15 Aug 2026 (the Italian original is preserved in git history).*
