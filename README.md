@@ -284,6 +284,20 @@ its
   the repository in parallel, coordinating through messages and the shared
   state files.
 
+**Model and effort, in both modes**: Claude Fable 5 (`claude-fable-5`),
+pinned with **no fallback model configured** — an API overload is retried on
+the same model, never silently downgraded. Reasoning effort followed the
+predecessor's rule "per task, not fixed maximum": the autonomous loop read a
+dial file (`STATE/effort.txt`, passed as `--effort`) each round — high only
+on the decisive nodes (SAT decisions, minimality lemmas), medium for
+bookkeeping — while the interactive sessions ran at the owner's default
+(xhigh), with the long solver runs detached so that model time was spent on
+decisions, not on waiting. Token accounting was not systematically tracked
+(the predecessor's policy, stated in its ai-workflow page); the honest
+proxies are the session counts above — and the fact that the entire
+13-to-15 program, solver time included, ran on one 16 GB laptop and one
+consumer Claude subscription.
+
 The raw diary of both modes is preserved verbatim in
 [STATE/journal.md](STATE/journal.md) (Italian).
 
