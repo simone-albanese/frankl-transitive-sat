@@ -1,0 +1,9 @@
+ZENODO_START Fri Aug 14 21:40:37 CEST 2026
+21:40:38 draft creato: id=21939129
+21:40:39 bucket: ok
+02:15:16 upload z15.lrat.xz: HTTP 201 ( 19G)
+02:15:16 upload z15.lrat.sha256: HTTP 201 (4.0K)
+02:15:16 upload Z15-RESOLVED.md: HTTP 201 (4.0K)
+02:15:17 metadati: HTTP 500
+02:15:17 ERRORE metadati
+ZENODO_DONE_MANUAL DOI recuperato Sat Aug 15 02:18:10 CEST 2026

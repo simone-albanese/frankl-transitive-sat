@@ -62,12 +62,34 @@ su Z7 e Z11 (entrambi exit 20 + "s VERIFIED") prima della produzione.
 Enunciato: minimali senza ciclo UNSAT (T6+T7) ∧ Z14 certificato (repo
 precedente) ⟹ nessun transitivo di grado 14 ammette controesempio invariante.
 
-## [ ] T9 — Grado 15: census, minimali senza 15-ciclo, e nota sulla
-dipendenza da Z15 (il ramo CON 15-ciclo resta condizionale finché Z15 non è
-confermato — decisione umana se chiudere prima Z15 via sharding).
+## [x] T9 — FATTO 2026-08-14 sera, sessione interattiva (Z15 chiuso alle
+19:20 aveva tolto la condizionalità; teorema chiuso e certificato alle
+20:53). Census: 104 gruppi da GAP trans15.grp (LMFDB dietro captcha),
+78 con 15-ciclo → coperti da Z15 certificato, 26 senza → 3 minimali
+CERTIFICATI PER ARITMETICA (15T5=A5 686 orbite, 15T9=[5^2]3 478,
+15T26=[3^4]5 222), 23 con testimone letterale. Tre istanze: CP-SAT
+INFEASIBLE + cadical UNSAT + LRAT "c VERIFIED" in 2m26s totali.
+Verbale: results/DEGREE15-CLOSED.md; teorema: docs/theorem-degree15.md;
+lemmi: docs/notes-minimality-15.md. NON checked: commit (deciso
+dall'umano).
+
+## [ ] T9b — Pubblicazione grado 15: commit+push, README (grado 15 chiuso),
+xz dei 3 LRAT (221 MB totali), release asset + eventuale versione Zenodo;
+aggiornare FOUND.md o creare FOUND-15. Decisioni di pubblicazione umane.
+
+## [ ] T9c — Nota arXiv (5–10 pagine, inglese): enunciati 13/14/15 +
+margine-0, riduzione, standard dei certificati, riformulazione "taglia
+media" (transitivo ⇒ frequenze uguali). Mappa citazioni PRONTA in
+docs/literature-review.md (sweep 2026-08-14, novità confermata; prima di
+sottomettere: ricontrollare i due preprint che pretendono la
+dimostrazione completa, e passare MathSciNet se accessibile).
 
 ## [ ] T10 — Grado 16: census (attesi ~1954 transitivi — verificare), stima
 istanze (i 2-gruppi regolari possono superare l'inviluppo: sonda prima).
+NOTA 2026-08-14: bloccato dall'ancora ciclica Z16 per il ramo CON 16-ciclo
+(Z16 monolitico: stime settimane-mesi + ~314 GB [E] su questo hardware —
+vedi open-problems del repo ciclico). Il ramo SENZA 16-ciclo è enorme
+(2-gruppi regolari con migliaia di orbite): sondare PRIMA di promettere.
 
 ## [ ] T-opz-minimality12 (OPZIONALE, bassa priorità) — Stato di 14T12
 Decidere se 14T12=1/2[D(7)^2]2 (196, 172 orbite) è transitivo-minimale:

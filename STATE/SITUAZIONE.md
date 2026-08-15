@@ -1,29 +1,37 @@
-# Situazione — aggiornata il 12 agosto 2026, pomeriggio
+# Situazione — aggiornata il 15 agosto 2026, ore 01:20
 
-**Semaforo:** 🟢 tutto bene — OBIETTIVO RAGGIUNTO (grado 14)
+**Semaforo:** 🟢 tutto bene — nessun calcolo in corso, nulla di rotto
 
-**In una frase:** ho finito e messo nero su bianco il risultato: la regola
-matematica che stiamo studiando vale per TUTTE le simmetrie "che mescolano
-tutto" su 14 elementi — dimostrato e ricontrollato con due metodi diversi.
+**In una frase:** la notte ha chiuso quasi tutto: 9 ricevute su 10 hanno
+anche il "doppio timbro" del verificatore a prova di errore; solo quella
+gigante di Z15 non c'è entrata — per memoria, non per un difetto.
 
-**Trovato qualcosa?** SÌ, ma nel senso buono: nessuna eccezione esiste.
-Abbiamo la certezza (con "scontrini" verificabili da chiunque) che su 14
-elementi la congettura regge per tutte queste simmetrie.
+**Trovato qualcosa?** Nessun problema nei risultati. Il controllo extra
+sul certificato gigante (147 GB) si è fermato all'~83% perché il
+verificatore "a prova di errore" aveva bisogno di più memoria di quanta
+ne abbia questo Mac (servono ~15–25 GB, ce ne sono 16). La ricevuta
+gigante resta comunque già verificata dal controllore veloce standard.
 
-**Avanzamento:** ▓▓▓▓▓▓▓▓▓▓  compito 8 di 8 del piano "grado 14" — COMPLETO
+**Avanzamento:** ▓▓▓▓▓▓▓▓▓░  teoremi chiusi e certificati; bozza
+dell'articolo pronta (8 pagine, PDF in paper/); manca solo il doppio
+timbro sul certificato più grande.
 
-**Ultima novità, in parole povere:** è come aver controllato tutte le
-serrature possibili di un palazzo: invece di provarle una per una (63),
-abbiamo dimostrato che bastava provarne 5 "fondamentali" più una già
-controllata in passato. Tutte e 5 sono risultate a posto, e ogni controllo
-ha prodotto una ricevuta che un programma indipendente ha timbrato come
-valida. Il risultato completo è scritto in `results/FOUND.md`.
+**Ultima novità, in parole povere:** è come aver fatto controllare 10
+scontrini da un revisore infallibile ma pignolo: 9 li ha timbrati in
+pochi secondi, per il decimo — un rotolo da 147 GB — gli serviva una
+scrivania più grande della nostra. Lo scontrino resta valido (l'aveva
+già controllato il revisore normale); se vogliamo anche il timbro
+infallibile, o affittiamo per qualche euro un computer con più memoria,
+o dividiamo il rotolo in pezzi.
 
-**Prossima mossa:** niente in automatico: il ciclo si ferma da solo. Se
-vuoi proseguire col passo successivo (15 elementi), rilancia
-`bash scripts/loop.sh` dopo aver rimesso `RUN` in `STATE/status.txt`.
+**Prossima mossa:** decisioni tue, con calma (sono scritte anche nel
+verbale results/cakelpr-verification.md): (1) salvare e pubblicare i
+risultati; (2) archivio Zenodo col certificatone compresso (serve un tuo
+token); (3) per il decimo timbro: computer a noleggio da 64 GB,
+spezzatino sul Mac, oppure accettare 9/10 dichiarandolo nell'articolo
+(già scritto così, onestamente).
 
-**Serve qualcosa da te?** Solo una decisione, con calma: proseguire con 15
-elementi, oppure fermarsi qui e pensare a pubblicare questo risultato.
+**Serve qualcosa da te?** Niente di urgente. Quando vuoi: le tre
+decisioni qui sopra.
 
-**Il tuo Mac:** tranquillo, nessun calcolo in corso.
+**Il tuo Mac:** libero e tranquillo dalla 01:05.

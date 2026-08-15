@@ -1,0 +1,9 @@
+=== 15T26 ===
+  15T26: 222 orbite non banali, 244935 clausole di chiusura (build 0.2s)
+  15T26 mode=decide min_size=3: INFEASIBLE  [2.2s]
+=== 15T9 ===
+  15T9: 478 orbite non banali, 2475193 clausole di chiusura (build 0.9s)
+  15T9 mode=decide min_size=3: INFEASIBLE  [31.7s]
+=== 15T5 ===
+  15T5: 686 orbite non banali, 4299635 clausole di chiusura (build 1.4s)
+  15T5 mode=decide min_size=3: INFEASIBLE  [59.1s]

@@ -1,0 +1,203 @@
+c --- [ banner ] -------------------------------------------------------------
+c 
+c CaDiCaL SAT Solver
+c Copyright (c) 2016-2026
+c A. Biere, M. Fleury, N. Froleyks, K. Fazekas, F. Pollitt, T. Faller
+c JKU Linz, University of Freiburg, TU Wien
+c 
+c Version 3.0.1 c60730422e758ef1cebe7aeddf2dda31c996bf04
+c Apple clang version 17.0.0 (clang-1700.6.3.2) -Wall -Wextra -O3 -DNDEBUG -DNCLOSEFROM
+c Wed Aug 12 12:29:40 CEST 2026 Darwin 192.168.1.2 24.6.0 arm64
+c 
+c --- [ proof tracing ] ------------------------------------------------------
+c 
+c opening file to write 'results/cnf/15T26.lrat'
+c writing non-binary proof trace to 'results/cnf/15T26.lrat'
+c 
+c --- [ parsing input ] ------------------------------------------------------
+c 
+c reading DIMACS file from 'results/cnf/15T26.cnf'
+c opening file to read 'results/cnf/15T26.cnf'
+c found 'p cnf 2564 257808' header
+c parsed 257808 clauses in 0.04 seconds process time
+c 
+c --- [ options ] ------------------------------------------------------------
+c 
+c   --binary=false                 (different from default 'true')
+c   --lrat=true                    (different from default 'false')
+c 
+c --- [ solving ] ------------------------------------------------------------
+c 
+c time measured in process time since initialization
+c 
+c  seconds  reduction conflicts       size tier2       variables
+c         MB    restarts   redundant    glue  trail         remaining
+c          level     rate       size/glu tier1  irredundant
+c 
+c *  0.04  0  0 0   0  0    0    0 0.0 0 0 2 6  0% 252750 2552 100%
+c )  0.05  0  0 0   0  0    0    0 0.0 1 0 2 6  1% 252750 2548 99%
+c {  0.05  0  0 0   0  0    0    0 0.0 1 0 2 6  1% 252750 2548 99%
+c i  0.05  0  0 0   0  0    0    0 0.0 1 0 2 6  1% 252750 2548 99%
+c i  0.05  0  0 0   0  5    1    0 0.0 1 0 2 6  1% 252750 2546 99%
+c i  0.05  0  0 0   0  7    2    0 0.0 1 0 2 6  1% 252750 2544 99%
+c i  0.05  0  1 0   0  9    3    0 0.0 1 0 2 6  1% 252750 2542 99%
+c i  0.05  0 16 0   2 10   11    5 2.1 2 1 2 6  2% 252750 2540 99%
+c i  0.05  0 15 0   2 11   12    5 2.2 2 1 2 6  2% 252750 2539 99%
+c i  0.05  0 167 0  16 14  175  152 1.5 3 2 2 6 17% 252750 2537 99%
+c -  0.07  0 112 1  48 13  300  253 1.8 4 2 2 6 28% 252664 2537 99%
+c i  0.08  0 85 1  69 11  426  363 1.9 4 2 2 6 33% 252664 2533 99%
+c i  0.09  0 53 1 111  8  818  708 2.0 5 2 2 6 34% 252664 2528 99%
+c -  0.11  0 49 2 133  7  908  771 2.1 5 3 2 6 35% 252621 2528 99%
+c }  0.12  0 46 2 153  7 1001  851 2.1 5 3 2 6 36% 252621 2528 99%
+c [  0.12  0  0 2 153  0 1001  851 0.0 0 0 2 6  0% 252621 2528 99%
+c O  0.12  0  4 2 153  5 1002  852 13.3 53 4 2 6 96% 252621 2528 99%
+c i  0.13  0 10 2 153  2 1321 1072 1.9 7 4 2 6 75% 252621 2507 98%
+c i  0.16  0 15 2 153  2 1776 1458 2.4 10 4 2 6 57% 252621 2506 98%
+c i  0.16  0 14 2 153  2 1926 1598 2.4 10 4 2 6 55% 252621 2503 98%
+c 
+c  seconds  reduction conflicts       size  tier2       variables
+c         MB    restarts   redundant     glue  trail         remaining
+c          level     rate       size/glue tier1  irredundant
+c 
+c -  0.18  0 14 3 153  2 1965 1376 2.3 10 4 2 6 54% 250092 2503 98%
+c ]  0.18  0 14 3 153  2 1966 1377 2.3 10 4 2 6 54% 250092 2503 98%
+c {  0.18  0 46 3 153  7 1966 1377 2.1 5 3 2 6 36% 250092 2503 98%
+c i  0.19  0 43 3 172  7 2055 1456 2.0 5 3 2 6 36% 250092 2502 98%
+c i  0.19  0 43 3 174  7 2064 1463 2.0 5 3 2 6 36% 250092 2500 98%
+c i  0.19  0 43 3 175  7 2066 1464 2.0 5 3 2 6 36% 250092 2497 97%
+c i  0.20  0 40 3 192  6 2166 1530 2.0 5 3 2 6 37% 250092 2496 97%
+c i  0.21  0 37 3 223  6 2368 1698 2.1 6 3 2 6 37% 250092 2495 97%
+c i  0.21  0 37 3 223  6 2376 1704 2.1 6 3 2 6 37% 250092 2494 97%
+c 2  0.25  0 30 3 329  5 2918 2162 2.2 7 3 2 6 41% 250092 2491 97%
+c d  0.26  0 30 3 329  5 2918 2146 2.2 7 3 2 6 41% 249957 2463 96%
+c d  0.26  0 30 3 329  5 2918 2142 2.2 7 3 2 6 41% 249935 2453 96%
+c p  0.27  0 30 3 329  5 2918 3763 2.2 7 3 2 6 41% 249935 2453 96%
+c c  0.42  0 30 3 329  5 2918 3761 2.2 7 3 2 6 41% 252262 2430 95%
+c d  0.43  0 30 3 329  5 2918 3746 2.2 7 3 2 6 41% 251571 2166 84%
+c k  0.43  0 30 3 329  5 2918 3746 2.2 7 3 2 6 41% 251571 2147 84%
+c 2  0.43  0 30 3 329  5 2918 3590 2.2 7 3 2 6 41% 251309 2147 84%
+c =  0.46  0 30 3 329  5 2918 3575 2.2 7 3 2 6 41% 248652 2124 83%
+c t  0.47  0 30 3 329  5 2918 3574 2.2 7 3 2 6 41% 248112 2124 83%
+c O  0.49  0 30 3 352  5 3003 3650 2.2 7 3 2 6 45% 248112 2124 83%
+c 
+c  seconds  reduction conflicts       size tier2       variables
+c         MB    restarts   redundant    glue  trail         remaining
+c          level     rate       size/glu tier1  irredundant
+c 
+c i  0.50  0 28 3 388  5 3200 3788 2.2 7 3 2 6 40% 248112 2116 83%
+c i  0.50  0 28 3 395  5 3257 3839 2.2 7 3 2 6 41% 248112 2115 82%
+c -  0.54  0 26 4 442  5 3514 2198 2.2 7 3 2 6 37% 236712 2113 82%
+c i  0.54  0 25 4 464  5 3615 2281 2.2 7 3 2 6 36% 236712 2111 82%
+c i  0.55  0 24 4 493  5 3808 2438 2.2 7 3 2 6 35% 236712 2110 82%
+c i  0.55  0 24 4 493  5 3878 2493 2.2 7 3 2 6 34% 236712 2104 82%
+c i  0.55  0 24 4 494  5 3933 2540 2.2 8 3 2 6 34% 236712 2103 82%
+c i  0.57  0 23 4 532  4 4194 2744 2.2 8 3 2 6 37% 236712 2102 82%
+c i  0.57  0 23 4 532  4 4195 2744 2.2 8 3 2 6 37% 236712 2101 82%
+c i  0.59  0 22 4 583  4 4421 2931 2.2 8 4 2 6 38% 236712 2098 82%
+c i  0.59  0 21 4 584  4 4577 3039 2.2 8 4 2 6 41% 236712 2040 80%
+c i  0.60  0 21 4 584  4 4603 3053 2.2 8 4 2 6 41% 236712 2039 80%
+c i  0.60  0 21 4 584  4 4604 3053 2.2 8 4 2 6 41% 236712 2008 78%
+c i  0.60  0 21 4 584  4 4618 3063 2.2 8 4 2 6 40% 236712 1940 76%
+c i  0.60  0 21 4 584  4 4620 3064 2.2 8 4 2 6 40% 236712 1915 75%
+c }  0.60  0 21 4 584  4 4625 3062 2.2 8 4 2 6 40% 236712 1180 46%
+c 0  0.60  0 21 4 584  4 4625 3062 2.2 8 4 2 6 40% 236712 1180 46%
+c 
+c --- [ closing proof ] ------------------------------------------------------
+c 
+c LRAT proof file 'results/cnf/15T26.lrat' closed
+c LRAT 34009 added clauses 40.02%
+c LRAT 50978 deleted clauses 59.98%
+c LRAT 3931976 bytes (3.75 MB)
+c 
+c --- [ result ] -------------------------------------------------------------
+c 
+s UNSATISFIABLE
+c 
+c --- [ run-time profiling ] -------------------------------------------------
+c 
+c process time taken by individual solving procedures
+c (percentage relative to process time for solving)
+c 
+c         0.34   61.50% search
+c         0.26   47.45% unstable
+c         0.21   38.48% simplify
+c         0.15   27.59% congruence
+c         0.07   11.85% stable
+c         0.04    6.68% parse
+c         0.02    4.13% sweep
+c         0.01    2.20% lucky
+c         0.00    0.27% probe
+c         0.00    0.06% backbone
+c   =================================
+c         0.56   93.60% solve
+c 
+c last line shows process time for solving
+c (percentage relative to total process time)
+c 
+c --- [ statistics ] ---------------------------------------------------------
+c 
+c chronological:              1909        41.28 %  of conflicts
+c conflicts:                  4625      8287.45    per second
+c backbone:                   7049       274.92 %  of vars
+c decisions:                 17201     30822.13    per second
+c fixed:                      1064        41.50 %  of all variables
+c learned:                    4280        92.54 %  per conflict
+c learned_lits:              65828       100.00 %  learned literals
+c minimized:                     0         0.00 %  learned literals
+c shrunken:                  24091        36.60 %  learned literals
+c minishrunken:               6256         9.50 %  learned literals
+c otfs:                        123         2.66 %  of conflict
+c propagations:            1137665         2.04 M  per second
+c reduced:                     394         8.52 %  per conflict
+c rephased:                      2      2312.50    interval
+c restarts:                    584         7.92    interval
+c stabilizing:                   1        20.61 %  of conflicts
+c substituted:                 320        12.48 %  of all variables
+c sweep equivs:                 18        85.71 %  of swept variables
+c subsumed:                  14362         5.19 %  of all clauses
+c strengthened:                122         0.04 %  of all clauses
+c ticks:                  23768599        22.25    propagation
+c weakened:                    640         2.00    average size
+c congruence:                    1      4625.00    interval
+c 
+c seconds are measured in process time for solving
+c 
+c --- [ glue usage ] ---------------------------------------------------------
+c 
+c focused glue 1 used 13585 clauses 70.78% accumulated 70.78% tier1
+c focused glue 2 used 3510 clauses 18.28% accumulated 89.06% tier2
+c 
+c stable glue 2 used 1347 clauses 19.49% accumulated 84.73% tier1
+c stable glue 3 used 442 clauses 6.397% accumulated 91.12%
+c stable glue 4 used 213 clauses 3.082% accumulated 94.21%
+c stable glue 5 used 131 clauses 1.896% accumulated 96.10%
+c stable glue 6 used 75 clauses 1.085% accumulated 97.19% tier2
+c 
+c 
+c --- [ resources ] ----------------------------------------------------------
+c 
+c total process time since initialization:         0.60    seconds
+c total real time since initialization:            0.67    seconds
+c maximum resident set size of process:          150.48    MB
+c 
+c --- [ shutting down ] ------------------------------------------------------
+c 
+c exit 20
+        0.68 real         0.55 user         0.04 sys
+           157794304  maximum resident set size
+                   0  average shared memory size
+                   0  average unshared data size
+                   0  average unshared stack size
+               10294  page reclaims
+                  75  page faults
+                   0  swaps
+                   0  block input operations
+                   0  block output operations
+                   0  messages sent
+                   0  messages received
+                   0  signals received
+                   7  voluntary context switches
+                 562  involuntary context switches
+          5509233560  instructions retired
+          2049480462  cycles elapsed
+            86278768  peak memory footprint

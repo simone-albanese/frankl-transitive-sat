@@ -1,0 +1,19 @@
+s VERIFIED UNSAT
+        3.99 real         2.05 user         1.44 sys
+          2955837440  maximum resident set size
+                   0  average shared memory size
+                   0  average unshared data size
+                   0  average unshared stack size
+              756535  page reclaims
+                   4  page faults
+                   0  swaps
+                   0  block input operations
+                   0  block output operations
+                   0  messages sent
+                   0  messages received
+                   0  signals received
+                   4  voluntary context switches
+               19934  involuntary context switches
+         51008990940  instructions retired
+         14370658030  cycles elapsed
+          4305882376  peak memory footprint

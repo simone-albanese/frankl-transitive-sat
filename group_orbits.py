@@ -91,9 +91,12 @@ def cyclic_gens(m):
     return [[(p + 1) % m for p in range(m)]]
 
 
-def load_group(label, path="STATE/census14.json"):
-    """Ritorna (m, gens) del gruppo `label` (es. '14T2') dal census."""
+def load_group(label, path=None):
+    """Ritorna (m, gens) del gruppo `label` (es. '14T2', '15T5') dal census
+    del suo grado: il prefisso prima della T sceglie STATE/census<grado>.json."""
     import json
+    if path is None:
+        path = f"STATE/census{label.split('T')[0]}.json"
     for g in json.load(open(path)):
         if g["label"] == label:
             return len(g["gens"][0]), g["gens"]

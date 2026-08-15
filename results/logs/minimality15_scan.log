@@ -1,0 +1,63 @@
+26 gruppi senza 15-ciclo; ordini [60, 75, 120, 150, 300, 360, 405, 600, 720, 810, 1620, 2520, 3240, 4860, 9720, 19440]
+--- 15T5 ordine 60 (A_5(15))
+    [0.0s] MINIMAL_ARITH orbite=688
+--- 15T9 ordine 75 ([5^2]3)
+    [0.0s] MINIMAL_ARITH orbite=480
+--- 15T10 ordine 120 (S_5(15))
+    [0.0s] NOT_MINIMAL (letterale: 15T5 ordine 60) orbite=396
+--- 15T12 ordine 150 ([5^2:2]3)
+    [0.0s] NOT_MINIMAL (letterale: 15T9 ordine 75) orbite=328
+--- 15T13 ordine 150 ([5^2]S(3))
+    [0.0s] NOT_MINIMAL (letterale: 15T9 ordine 75) orbite=344
+--- 15T14 ordine 150 (5^2:2[1/2]S(3))
+    [0.0s] NOT_MINIMAL (letterale: 15T9 ordine 75) orbite=272
+--- 15T17 ordine 300 (1/2[5^2:4]S(3))
+    [0.0s] NOT_MINIMAL (letterale: 15T9 ordine 75) orbite=180
+--- 15T18 ordine 300 ([5^2:2]S(3))
+    [0.0s] NOT_MINIMAL (letterale: 15T9 ordine 75) orbite=232
+--- 15T19 ordine 300 ([5^2:4]3)
+    [0.0s] NOT_MINIMAL (letterale: 15T9 ordine 75) orbite=176
+--- 15T20 ordine 360 (A_6(15))
+    [0.0s] NOT_MINIMAL (letterale: 15T5 ordine 60) orbite=184
+--- 15T26 ordine 405 ([3^4]5)
+    [0.0s] MINIMAL_ARITH orbite=224
+--- 15T27 ordine 600 ([5^2:4]S(3))
+    [0.0s] NOT_MINIMAL (letterale: 15T9 ordine 75) orbite=130
+--- 15T28 ordine 720 (S_6(15))
+    [0.0s] NOT_MINIMAL (letterale: 15T5 ordine 60) orbite=156
+--- 15T33 ordine 810 ([3^4:2]5)
+    [0.0s] NOT_MINIMAL (letterale: 15T26 ordine 405) orbite=216
+--- 15T34 ordine 810 ([3^4]D(5))
+    [0.0s] NOT_MINIMAL (letterale: 15T26 ordine 405) orbite=152
+--- 15T35 ordine 810 (1/2[3^4:2]D(5))
+    [0.0s] NOT_MINIMAL (letterale: 15T26 ordine 405) orbite=144
+--- 15T41 ordine 1620 ([3^4]F(5))
+    [0.0s] NOT_MINIMAL (letterale: 15T26 ordine 405) orbite=88
+--- 15T42 ordine 1620 (1/2[3^4:2]F(5))
+    [0.0s] NOT_MINIMAL (letterale: 15T26 ordine 405) orbite=84
+--- 15T43 ordine 1620 ([3^4:2]D(5))
+    [0.0s] NOT_MINIMAL (letterale: 15T26 ordine 405) orbite=144
+--- 15T47 ordine 2520 (A_7(15))
+    [0.0s] NOT_MINIMAL (letterale: 15T5 ordine 60) orbite=62
+--- 15T52 ordine 3240 ([3^4:2]F(5))
+    [0.0s] NOT_MINIMAL (letterale: 15T26 ordine 405) orbite=82
+--- 15T53 ordine 4860 ([3^4]A(5))
+    [0.0s] NOT_MINIMAL (letterale: 15T26 ordine 405) orbite=68
+--- 15T61 ordine 9720 ([3^4:2]A(5))
+    [0.1s] NOT_MINIMAL (letterale: 15T26 ordine 405) orbite=62
+--- 15T62 ordine 9720 (1/2[3^4:2]S(5))
+    [0.1s] NOT_MINIMAL (letterale: 15T26 ordine 405) orbite=62
+--- 15T63 ordine 9720 ([3^4]S(5))
+    [0.1s] NOT_MINIMAL (letterale: 15T26 ordine 405) orbite=68
+--- 15T70 ordine 19440 ([3^4:2]S(5))
+    [0.1s] NOT_MINIMAL (letterale: 15T26 ordine 405) orbite=62
+
+=== SOMMARIO ===
+MINIMALI (aritmetica): [5, 9, 26]
+SENZA TESTIMONE (inclusi per prudenza): []
+NOT_MINIMAL: [10, 12, 13, 14, 17, 18, 19, 20, 27, 28, 33, 34, 35, 41, 42, 43, 47, 52, 53, 61, 62, 63, 70]
+LISTA-ISTANZE (per orbite decrescenti):
+  15T5   ord=60     orbite=688   A_5(15)
+  15T9   ord=75     orbite=480   [5^2]3
+  15T26  ord=405    orbite=224   [3^4]5
+scritto results/minimality15_scan.json

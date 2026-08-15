@@ -233,3 +233,87 @@ NON CANCELLARE results/cnf/z15.lrat (147 GB): E' il certificato.
 sha256 in calcolo -> results/cnf/z15.lrat.sha256. Da fare: verbale
 results/Z15-CLOSED.md, commit, decisioni di pubblicazione (nuova versione
 Zenodo repo ciclico + aggiornare open-problems.md), archiviazione xz.
+
+## 2026-08-14 20:53 — *** GRADO 15 CHIUSO: teorema transitivo certificato (T9) ***
+Sessione interattiva (richiesta umana: "dall'analisi del percorso Z15,
+risolvi e proponi soluzioni"). Catena completa in serata:
+1. Census 104 gruppi da GAP trans15.grp sha 89cd49a6 (LMFDB dietro
+   reCAPTCHA il 14/08 — fonte primaria migliore; ordini incrociati con
+   TRANSPROPERTIES per ogni gruppo enumerato). 78 con 15-ciclo (coperti
+   da Z15 certificato stamattina), 26 senza, 0 aperti. Trappola nuova
+   documentata: il 15-ciclo e' PARI, niente scorciatoia di parita'
+   (PSL(4,2) ha cicli di Singer).
+2. Riduzione: 3 minimali certificati per ARITMETICA (Lemma 5 ordini
+   15/30/45 + completezza census): 15T5=A5 (686 orbite), 15T9=[5^2]3
+   (478), 15T26=[3^4]5 (222); gli altri 23 con testimone LETTERALE
+   (generatori census-figlio dentro l'enumerazione del padre). Nessun
+   UNKNOWN. Sanity a mano 688/480 orbite Burnside riprodotte.
+3. Controlli gauntlet Z7/Z11 INFEASIBLE (t9_controls_gauntlet.log).
+4. Metodo 1 CP-SAT decide min_size=3: INFEASIBLE 2,2/31,7/59,1 s.
+5. Metodo 2+certificati (driver t9_certify.sh, sganciato): cadical
+   --lrat --no-binary exit 20 su CNF congelati (sha in
+   SHA256-15T-cnf.txt) + lrat-check "c VERIFIED" 3/3; LRAT 3,9/54,9/
+   162,2 MB (sha in SHA256-15T-lrat.txt). Totale 2m26s SOTTO carico xz.
+Verbale: results/DEGREE15-CLOSED.md. Teorema: docs/theorem-degree15.md.
+Lemmi: docs/notes-minimality-15.md. Backlog T9 spuntato, T9b aperto
+(pubblicazione: commit/push/README/xz/Zenodo = decisioni umane).
+Intanto xz di z15.lrat in corso (11,3 GB output alle 20:50, ETA ~22:15).
+
+## 2026-08-14 ~22:20 — Controllo di letteratura COMPLETO: novita' confermata
+Sweep arXiv+web (docs/literature-review.md). Esito: NESSUNA sovrapposizione.
+Verifica esaustiva generale ferma a m<=12 (Vuckovic-Zivkovic 2017); linea
+invariante = solo famiglie 1-orbita (Johnson-Vaughan 1998; Polymath11;
+AEL EJC 2021 arXiv:2010.08795 con "media >= n/2" su gruppi abeliani;
+preprint Nived 2024; formalizzazione Isabelle di AEL nell'AFP, gen 2025).
+Nessun lavoro SAT/DRAT/LRAT su Frankl: i nostri paiono i primi certificati
+SAT sulla congettura, e i primi con checking formalmente verificato.
+Costante generale ferma a ~0,38271 (Liu); congettura APERTA (due preprint
+che pretendono la dimostrazione completa, 2015 e gen 2026, non accettati:
+da rimonitorare prima di sottomettere). Inquadramento per la nota: usare
+la riformulazione "transitivo => frequenze uguali => media >= m/2"
+(stessa moneta di AEL, complementarita' esatta). Trovato cugino di
+template: Rivest-Vuillemin su 14 variabili (arXiv:1701.02374, gruppi
+transitivi di grado 14 — la citazione in notes-minimality.md e' imprecisa,
+correggerla se usata). cake_lpr su Z15: in corsa (RSS ~3 GB, sano).
+
+## 2026-08-14 22:28 — Bozza nota arXiv scritta e compilata (T9c avviato)
+paper/ucc-transitive-15.tex (amsart, file unico, bibliografia inclusa)
++ PDF compilato con tectonic (installato via brew). Contenuto: teorema
+principale (transitivi m<=15), riformulazione "frequenze uguali/taglia
+media", teorema margine-0, riduzioni con lemmi (incl. Lemma aritmetico
+grado 15), tabelle istanze cicliche/14/15, sezione verified
+verification, related work dalla literature-review, riproducibilita'
+con DOI. TODO nel sorgente: authorship/ringraziamenti (decisione
+umana), DOI nuova versione Zenodo, riga cake_lpr-Z15 (run in corso),
+ricontrollo ID arXiv della linea Gilmer. cake_lpr Z15: in corsa.
+
+## 2026-08-14 23:30 — cake_lpr su Z15: progresso misurato, ETA rivista
+Run sano (RSS 2-4,5 GB, CPU 30-80%). lsof -o su macOS mostra la taglia
+(smascherato con sonda a offset noto); offset VERO via proc_pidfdinfo:
+39,6% del file alle 23:30, 12 MB/s costanti => fine ~01:45. Fattore
+reale vs lrat-check ~10x, non il 2,3x estrapolato dai certificati
+piccoli (lezione in lezioni.md). Driver sotto caffeinate: notifica
+macOS automatica a fine corsa anche senza sessione attiva.
+
+## 2026-08-15 01:15 — cake_lpr su Z15: HEAP ESAURITO (limite risorse, non verdetto)
+Run 21:57->01:05 (3h10m): "CakeML heap space exhausted" con heap 12 GB,
+alla stima ~80-85% del file [E da 12 MB/s misurati]. RSS max 6,5 GB,
+footprint 12,9 GB. NON dice nulla contro il certificato (che resta
+VERIFICATO da lrat-check): e' il fabbisogno del checker verificato —
+~28,85 M clausole vive x rappresentazione CakeML (~4-6x C) x GC a copia
+(x2) = ~15-25 GB > 16 GB fisici. Bilancio cake_lpr: 9/10 VERIFIED
+(3 grado-15 + 6 margin0); Z15 pendente con 4 strade documentate in
+results/cakelpr-verification.md (consigliata: macchina 64 GB, e' la
+config prevista dal Makefile stesso di cake_lpr). Paper aggiornato
+(abstract + sezione verified verification, ricompilato). Nessun
+processo residuo nostro; z15.lrat e z15.lrat.xz intatti.
+
+## 2026-08-15 00:30 — ARCHIVIAZIONE E PUBBLICAZIONE Z15 COMPLETATE
+xz: 147 GB -> 19 GB (20.293.454.416 byte, sha fcd65ffc..., 1h48m, test ok).
+Zenodo v1.1.0 PUBBLICATO: DOI 10.5281/zenodo.21939129 (concept ...21900942),
+7 file (3 nuovi: z15.lrat.xz + sha + Z15-RESOLVED.md; 4 ereditati v1.0.0).
+Intoppo risolto: PUT metadati HTTP 500 per prereserve_doi ereditato ->
+rimosso prereserve_doi/imprint_publisher dal PUT -> 200 -> publish ok.
+Repo ciclico: DOI agganciato in Z15-RESOLVED.md e pushato. Token eliminato
+dallo scratchpad; CHIEDERE ALL'UTENTE DI REVOCARLO su zenodo.org.
+Restano (altra sessione, T9b): commit grado 15 + release/archivio suoi LRAT.

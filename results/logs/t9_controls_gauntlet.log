@@ -1,0 +1,4 @@
+  Z_7: 18 orbite non banali, 407 clausole di chiusura (build 0.0s)
+  Z_7 mode=decide min_size=3: INFEASIBLE  [0.0s]
+  Z_11: 186 orbite non banali, 117373 clausole di chiusura (build 0.0s)
+  Z_11 mode=decide min_size=3: INFEASIBLE  [1.3s]

@@ -167,3 +167,40 @@ prima di scrivere una voce di journal/HANDOFF eseguire
 (es. 14:08, 14:20, 14:24, riscontrate contro i timestamp del driver) lo
 hanno fatto correttamente. (Aggiunta dalla sessione di supervisione a loop
 fermo su DONE, 2026-08-12.)
+
+## Le dipendenze esterne di dati vanno prese alla fonte (2026-08-14)
+L'API LMFDB, usata per il census di grado 14, il 14/08 era dietro
+reCAPTCHA (curl restituisce la challenge di Google, con qualsiasi header).
+Soluzione migliore della pezza: il file dati originale della libreria GAP
+transgrp (raw.githubusercontent.com/hulpke/transgrp), cioè la fonte che
+LMFDB stessa serve. Bonus di rigore: il file ha due sezioni indipendenti
+(generatori e proprietà) e l'ordine BFS può essere incrociato con quello
+dichiarato — doppia fonte gratuita. Regola: per dati di classificazione,
+preferire il file d'archivio con sha256 alla API viva.
+
+## La scorciatoia di parità vale SOLO nei gradi pari (2026-08-14)
+Al grado 14 "generatori tutti pari ⇒ G ≤ A14 ⇒ niente 14-ciclo" (il
+14-ciclo è dispari). Al grado 15 il 15-ciclo è PARI e la scorciatoia
+non esiste: PSL(4,2) ≅ A8 ≤ A15 ha i cicli di Singer. Un ciclo di
+lunghezza n è pari sse n è dispari: prima di riusare il trucco,
+controllare la parità di n−1.
+
+## Riduzione prima del calcolo: il rapporto può essere 500:1 (2026-08-14)
+Grado 15: il census (104) più l'aritmetica dei divisori (Lemma 5 +
+completezza del census) hanno lasciato TRE istanze, tutte sotto le 700
+orbite; l'intera fase SAT certificata è durata 2m26s, contro le 20h26m
+del solo Z15 monolitico. Il tempo speso a dimostrare lemmi di
+minimalità è stato ripagato ~500 volte. Confermato anche il pattern
+"testimoni letterali": nelle librerie a generatori incrementali il
+sottogruppo del census è spesso un sottoinsieme letterale — provare
+l'appartenenza dei generatori PRIMA di cercare coniugati.
+
+## Le estrapolazioni di throughput tra regimi di taglia mentono (2026-08-14)
+cake_lpr sui certificati da MB: 2,3x lrat-check. Sul certificato da 147
+GB: ~10x (12 MB/s costanti, misurati leggendo il VERO offset del file
+via proc_pidfdinfo). Cache, GC e working set cambiano regime: mai
+proiettare un fattore misurato su input 1000x piu' grandi senza dirlo
+[E]. Bonus strumenti: su macOS `lsof -o` mostra la TAGLIA del file, non
+l'offset (verificato con sonda a offset noto — collaudare anche gli
+strumenti di misura); l'offset vero si legge con
+proc_pidfdinfo(pid, fd, PROC_PIDFDVNODEPATHINFO): fi_offset a byte 8.

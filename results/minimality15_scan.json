@@ -1,0 +1,1322 @@
+{
+ "summary": {
+  "minimal_arith": [
+   5,
+   9,
+   26
+  ],
+  "no_witness_found": [],
+  "not_minimal": [
+   10,
+   12,
+   13,
+   14,
+   17,
+   18,
+   19,
+   20,
+   27,
+   28,
+   33,
+   34,
+   35,
+   41,
+   42,
+   43,
+   47,
+   52,
+   53,
+   61,
+   62,
+   63,
+   70
+  ],
+  "run_list": [
+   {
+    "t": 5,
+    "label": "15T5",
+    "order": 60,
+    "orbits": 688,
+    "name": "A_5(15)"
+   },
+   {
+    "t": 9,
+    "label": "15T9",
+    "order": 75,
+    "orbits": 480,
+    "name": "[5^2]3"
+   },
+   {
+    "t": 26,
+    "label": "15T26",
+    "order": 405,
+    "orbits": 224,
+    "name": "[3^4]5"
+   }
+  ]
+ },
+ "groups": [
+  {
+   "t": 5,
+   "label": "15T5",
+   "order": 60,
+   "name": "A_5(15)",
+   "orbits_burnside": 688,
+   "divisor_candidates": [],
+   "status": "MINIMAL_ARITH",
+   "basis": "nessun ordine del census senza-ciclo divide propriamente |G|; ordini 15 e 30 esclusi dal lemma C15"
+  },
+  {
+   "t": 9,
+   "label": "15T9",
+   "order": 75,
+   "name": "[5^2]3",
+   "orbits_burnside": 480,
+   "divisor_candidates": [],
+   "status": "MINIMAL_ARITH",
+   "basis": "nessun ordine del census senza-ciclo divide propriamente |G|; ordini 15 e 30 esclusi dal lemma C15"
+  },
+  {
+   "t": 10,
+   "label": "15T10",
+   "order": 120,
+   "name": "S_5(15)",
+   "orbits_burnside": 396,
+   "divisor_candidates": [
+    60
+   ],
+   "status": "NOT_MINIMAL",
+   "witness": {
+    "literal_census": "15T5",
+    "sub_order": 60,
+    "gens": [
+     [
+      8,
+      14,
+      13,
+      4,
+      10,
+      1,
+      11,
+      3,
+      9,
+      2,
+      12,
+      5,
+      7,
+      0,
+      6
+     ],
+     [
+      3,
+      4,
+      6,
+      9,
+      7,
+      8,
+      10,
+      1,
+      14,
+      0,
+      2,
+      13,
+      11,
+      12,
+      5
+     ]
+    ]
+   }
+  },
+  {
+   "t": 12,
+   "label": "15T12",
+   "order": 150,
+   "name": "[5^2:2]3",
+   "orbits_burnside": 328,
+   "divisor_candidates": [
+    75
+   ],
+   "status": "NOT_MINIMAL",
+   "witness": {
+    "literal_census": "15T9",
+    "sub_order": 75,
+    "gens": [
+     [
+      12,
+      4,
+      2,
+      0,
+      7,
+      5,
+      3,
+      10,
+      8,
+      6,
+      13,
+      11,
+      9,
+      1,
+      14
+     ],
+     [
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      0,
+      1,
+      2,
+      3,
+      4
+     ]
+    ]
+   }
+  },
+  {
+   "t": 13,
+   "label": "15T13",
+   "order": 150,
+   "name": "[5^2]S(3)",
+   "orbits_burnside": 344,
+   "divisor_candidates": [
+    75
+   ],
+   "status": "NOT_MINIMAL",
+   "witness": {
+    "literal_census": "15T9",
+    "sub_order": 75,
+    "gens": [
+     [
+      12,
+      4,
+      2,
+      0,
+      7,
+      5,
+      3,
+      10,
+      8,
+      6,
+      13,
+      11,
+      9,
+      1,
+      14
+     ],
+     [
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      0,
+      1,
+      2,
+      3,
+      4
+     ]
+    ]
+   }
+  },
+  {
+   "t": 14,
+   "label": "15T14",
+   "order": 150,
+   "name": "5^2:2[1/2]S(3)",
+   "orbits_burnside": 272,
+   "divisor_candidates": [
+    75
+   ],
+   "status": "NOT_MINIMAL",
+   "witness": {
+    "literal_census": "15T9",
+    "sub_order": 75,
+    "gens": [
+     [
+      12,
+      4,
+      2,
+      0,
+      7,
+      5,
+      3,
+      10,
+      8,
+      6,
+      13,
+      11,
+      9,
+      1,
+      14
+     ],
+     [
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      0,
+      1,
+      2,
+      3,
+      4
+     ]
+    ]
+   }
+  },
+  {
+   "t": 17,
+   "label": "15T17",
+   "order": 300,
+   "name": "1/2[5^2:4]S(3)",
+   "orbits_burnside": 180,
+   "divisor_candidates": [
+    60,
+    75,
+    150
+   ],
+   "status": "NOT_MINIMAL",
+   "witness": {
+    "literal_census": "15T9",
+    "sub_order": 75,
+    "gens": [
+     [
+      12,
+      4,
+      2,
+      0,
+      7,
+      5,
+      3,
+      10,
+      8,
+      6,
+      13,
+      11,
+      9,
+      1,
+      14
+     ],
+     [
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      0,
+      1,
+      2,
+      3,
+      4
+     ]
+    ]
+   }
+  },
+  {
+   "t": 18,
+   "label": "15T18",
+   "order": 300,
+   "name": "[5^2:2]S(3)",
+   "orbits_burnside": 232,
+   "divisor_candidates": [
+    60,
+    75,
+    150
+   ],
+   "status": "NOT_MINIMAL",
+   "witness": {
+    "literal_census": "15T9",
+    "sub_order": 75,
+    "gens": [
+     [
+      12,
+      4,
+      2,
+      0,
+      7,
+      5,
+      3,
+      10,
+      8,
+      6,
+      13,
+      11,
+      9,
+      1,
+      14
+     ],
+     [
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      0,
+      1,
+      2,
+      3,
+      4
+     ]
+    ]
+   }
+  },
+  {
+   "t": 19,
+   "label": "15T19",
+   "order": 300,
+   "name": "[5^2:4]3",
+   "orbits_burnside": 176,
+   "divisor_candidates": [
+    60,
+    75,
+    150
+   ],
+   "status": "NOT_MINIMAL",
+   "witness": {
+    "literal_census": "15T9",
+    "sub_order": 75,
+    "gens": [
+     [
+      12,
+      4,
+      2,
+      0,
+      7,
+      5,
+      3,
+      10,
+      8,
+      6,
+      13,
+      11,
+      9,
+      1,
+      14
+     ],
+     [
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      0,
+      1,
+      2,
+      3,
+      4
+     ]
+    ]
+   }
+  },
+  {
+   "t": 20,
+   "label": "15T20",
+   "order": 360,
+   "name": "A_6(15)",
+   "orbits_burnside": 184,
+   "divisor_candidates": [
+    60,
+    120
+   ],
+   "status": "NOT_MINIMAL",
+   "witness": {
+    "literal_census": "15T5",
+    "sub_order": 60,
+    "gens": [
+     [
+      8,
+      14,
+      13,
+      4,
+      10,
+      1,
+      11,
+      3,
+      9,
+      2,
+      12,
+      5,
+      7,
+      0,
+      6
+     ],
+     [
+      3,
+      4,
+      6,
+      9,
+      7,
+      8,
+      10,
+      1,
+      14,
+      0,
+      2,
+      13,
+      11,
+      12,
+      5
+     ]
+    ]
+   }
+  },
+  {
+   "t": 26,
+   "label": "15T26",
+   "order": 405,
+   "name": "[3^4]5",
+   "orbits_burnside": 224,
+   "divisor_candidates": [],
+   "status": "MINIMAL_ARITH",
+   "basis": "nessun ordine del census senza-ciclo divide propriamente |G|; ordini 15 e 30 esclusi dal lemma C15"
+  },
+  {
+   "t": 27,
+   "label": "15T27",
+   "order": 600,
+   "name": "[5^2:4]S(3)",
+   "orbits_burnside": 130,
+   "divisor_candidates": [
+    60,
+    75,
+    120,
+    150,
+    300
+   ],
+   "status": "NOT_MINIMAL",
+   "witness": {
+    "literal_census": "15T9",
+    "sub_order": 75,
+    "gens": [
+     [
+      12,
+      4,
+      2,
+      0,
+      7,
+      5,
+      3,
+      10,
+      8,
+      6,
+      13,
+      11,
+      9,
+      1,
+      14
+     ],
+     [
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      0,
+      1,
+      2,
+      3,
+      4
+     ]
+    ]
+   }
+  },
+  {
+   "t": 28,
+   "label": "15T28",
+   "order": 720,
+   "name": "S_6(15)",
+   "orbits_burnside": 156,
+   "divisor_candidates": [
+    60,
+    120,
+    360
+   ],
+   "status": "NOT_MINIMAL",
+   "witness": {
+    "literal_census": "15T5",
+    "sub_order": 60,
+    "gens": [
+     [
+      8,
+      14,
+      13,
+      4,
+      10,
+      1,
+      11,
+      3,
+      9,
+      2,
+      12,
+      5,
+      7,
+      0,
+      6
+     ],
+     [
+      3,
+      4,
+      6,
+      9,
+      7,
+      8,
+      10,
+      1,
+      14,
+      0,
+      2,
+      13,
+      11,
+      12,
+      5
+     ]
+    ]
+   }
+  },
+  {
+   "t": 33,
+   "label": "15T33",
+   "order": 810,
+   "name": "[3^4:2]5",
+   "orbits_burnside": 216,
+   "divisor_candidates": [
+    405
+   ],
+   "status": "NOT_MINIMAL",
+   "witness": {
+    "literal_census": "15T26",
+    "sub_order": 405,
+    "gens": [
+     [
+      5,
+      1,
+      2,
+      13,
+      4,
+      10,
+      6,
+      7,
+      3,
+      9,
+      0,
+      11,
+      12,
+      8,
+      14
+     ],
+     [
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      0,
+      1,
+      2
+     ]
+    ]
+   }
+  },
+  {
+   "t": 34,
+   "label": "15T34",
+   "order": 810,
+   "name": "[3^4]D(5)",
+   "orbits_burnside": 152,
+   "divisor_candidates": [
+    405
+   ],
+   "status": "NOT_MINIMAL",
+   "witness": {
+    "literal_census": "15T26",
+    "sub_order": 405,
+    "gens": [
+     [
+      5,
+      1,
+      2,
+      13,
+      4,
+      10,
+      6,
+      7,
+      3,
+      9,
+      0,
+      11,
+      12,
+      8,
+      14
+     ],
+     [
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      0,
+      1,
+      2
+     ]
+    ]
+   }
+  },
+  {
+   "t": 35,
+   "label": "15T35",
+   "order": 810,
+   "name": "1/2[3^4:2]D(5)",
+   "orbits_burnside": 144,
+   "divisor_candidates": [
+    405
+   ],
+   "status": "NOT_MINIMAL",
+   "witness": {
+    "literal_census": "15T26",
+    "sub_order": 405,
+    "gens": [
+     [
+      5,
+      1,
+      2,
+      13,
+      4,
+      10,
+      6,
+      7,
+      3,
+      9,
+      0,
+      11,
+      12,
+      8,
+      14
+     ],
+     [
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      0,
+      1,
+      2
+     ]
+    ]
+   }
+  },
+  {
+   "t": 41,
+   "label": "15T41",
+   "order": 1620,
+   "name": "[3^4]F(5)",
+   "orbits_burnside": 88,
+   "divisor_candidates": [
+    60,
+    405,
+    810
+   ],
+   "status": "NOT_MINIMAL",
+   "witness": {
+    "literal_census": "15T26",
+    "sub_order": 405,
+    "gens": [
+     [
+      5,
+      1,
+      2,
+      13,
+      4,
+      10,
+      6,
+      7,
+      3,
+      9,
+      0,
+      11,
+      12,
+      8,
+      14
+     ],
+     [
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      0,
+      1,
+      2
+     ]
+    ]
+   }
+  },
+  {
+   "t": 42,
+   "label": "15T42",
+   "order": 1620,
+   "name": "1/2[3^4:2]F(5)",
+   "orbits_burnside": 84,
+   "divisor_candidates": [
+    60,
+    405,
+    810
+   ],
+   "status": "NOT_MINIMAL",
+   "witness": {
+    "literal_census": "15T26",
+    "sub_order": 405,
+    "gens": [
+     [
+      5,
+      1,
+      2,
+      13,
+      4,
+      10,
+      6,
+      7,
+      3,
+      9,
+      0,
+      11,
+      12,
+      8,
+      14
+     ],
+     [
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      0,
+      1,
+      2
+     ]
+    ]
+   }
+  },
+  {
+   "t": 43,
+   "label": "15T43",
+   "order": 1620,
+   "name": "[3^4:2]D(5)",
+   "orbits_burnside": 144,
+   "divisor_candidates": [
+    60,
+    405,
+    810
+   ],
+   "status": "NOT_MINIMAL",
+   "witness": {
+    "literal_census": "15T26",
+    "sub_order": 405,
+    "gens": [
+     [
+      5,
+      1,
+      2,
+      13,
+      4,
+      10,
+      6,
+      7,
+      3,
+      9,
+      0,
+      11,
+      12,
+      8,
+      14
+     ],
+     [
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      0,
+      1,
+      2
+     ]
+    ]
+   }
+  },
+  {
+   "t": 47,
+   "label": "15T47",
+   "order": 2520,
+   "name": "A_7(15)",
+   "orbits_burnside": 62,
+   "divisor_candidates": [
+    60,
+    120,
+    360
+   ],
+   "status": "NOT_MINIMAL",
+   "witness": {
+    "literal_census": "15T5",
+    "sub_order": 60,
+    "gens": [
+     [
+      8,
+      14,
+      13,
+      4,
+      10,
+      1,
+      11,
+      3,
+      9,
+      2,
+      12,
+      5,
+      7,
+      0,
+      6
+     ],
+     [
+      3,
+      4,
+      6,
+      9,
+      7,
+      8,
+      10,
+      1,
+      14,
+      0,
+      2,
+      13,
+      11,
+      12,
+      5
+     ]
+    ]
+   }
+  },
+  {
+   "t": 52,
+   "label": "15T52",
+   "order": 3240,
+   "name": "[3^4:2]F(5)",
+   "orbits_burnside": 82,
+   "divisor_candidates": [
+    60,
+    120,
+    360,
+    405,
+    810,
+    1620
+   ],
+   "status": "NOT_MINIMAL",
+   "witness": {
+    "literal_census": "15T26",
+    "sub_order": 405,
+    "gens": [
+     [
+      5,
+      1,
+      2,
+      13,
+      4,
+      10,
+      6,
+      7,
+      3,
+      9,
+      0,
+      11,
+      12,
+      8,
+      14
+     ],
+     [
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      0,
+      1,
+      2
+     ]
+    ]
+   }
+  },
+  {
+   "t": 53,
+   "label": "15T53",
+   "order": 4860,
+   "name": "[3^4]A(5)",
+   "orbits_burnside": 68,
+   "divisor_candidates": [
+    60,
+    405,
+    810,
+    1620
+   ],
+   "status": "NOT_MINIMAL",
+   "witness": {
+    "literal_census": "15T26",
+    "sub_order": 405,
+    "gens": [
+     [
+      5,
+      1,
+      2,
+      13,
+      4,
+      10,
+      6,
+      7,
+      3,
+      9,
+      0,
+      11,
+      12,
+      8,
+      14
+     ],
+     [
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      0,
+      1,
+      2
+     ]
+    ]
+   }
+  },
+  {
+   "t": 61,
+   "label": "15T61",
+   "order": 9720,
+   "name": "[3^4:2]A(5)",
+   "orbits_burnside": 62,
+   "divisor_candidates": [
+    60,
+    120,
+    360,
+    405,
+    810,
+    1620,
+    3240,
+    4860
+   ],
+   "status": "NOT_MINIMAL",
+   "witness": {
+    "literal_census": "15T26",
+    "sub_order": 405,
+    "gens": [
+     [
+      5,
+      1,
+      2,
+      13,
+      4,
+      10,
+      6,
+      7,
+      3,
+      9,
+      0,
+      11,
+      12,
+      8,
+      14
+     ],
+     [
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      0,
+      1,
+      2
+     ]
+    ]
+   }
+  },
+  {
+   "t": 62,
+   "label": "15T62",
+   "order": 9720,
+   "name": "1/2[3^4:2]S(5)",
+   "orbits_burnside": 62,
+   "divisor_candidates": [
+    60,
+    120,
+    360,
+    405,
+    810,
+    1620,
+    3240,
+    4860
+   ],
+   "status": "NOT_MINIMAL",
+   "witness": {
+    "literal_census": "15T26",
+    "sub_order": 405,
+    "gens": [
+     [
+      5,
+      1,
+      2,
+      13,
+      4,
+      10,
+      6,
+      7,
+      3,
+      9,
+      0,
+      11,
+      12,
+      8,
+      14
+     ],
+     [
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      0,
+      1,
+      2
+     ]
+    ]
+   }
+  },
+  {
+   "t": 63,
+   "label": "15T63",
+   "order": 9720,
+   "name": "[3^4]S(5)",
+   "orbits_burnside": 68,
+   "divisor_candidates": [
+    60,
+    120,
+    360,
+    405,
+    810,
+    1620,
+    3240,
+    4860
+   ],
+   "status": "NOT_MINIMAL",
+   "witness": {
+    "literal_census": "15T26",
+    "sub_order": 405,
+    "gens": [
+     [
+      5,
+      1,
+      2,
+      13,
+      4,
+      10,
+      6,
+      7,
+      3,
+      9,
+      0,
+      11,
+      12,
+      8,
+      14
+     ],
+     [
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      0,
+      1,
+      2
+     ]
+    ]
+   }
+  },
+  {
+   "t": 70,
+   "label": "15T70",
+   "order": 19440,
+   "name": "[3^4:2]S(5)",
+   "orbits_burnside": 62,
+   "divisor_candidates": [
+    60,
+    120,
+    360,
+    405,
+    720,
+    810,
+    1620,
+    3240,
+    4860,
+    9720
+   ],
+   "status": "NOT_MINIMAL",
+   "witness": {
+    "literal_census": "15T26",
+    "sub_order": 405,
+    "gens": [
+     [
+      5,
+      1,
+      2,
+      13,
+      4,
+      10,
+      6,
+      7,
+      3,
+      9,
+      0,
+      11,
+      12,
+      8,
+      14
+     ],
+     [
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      0,
+      1,
+      2
+     ]
+    ]
+   }
+  }
+ ]
+}

@@ -1,0 +1,20 @@
+T9_CERTIFY_START Fri Aug 14 20:50:38 CEST 2026
+=== 15T26 solve Fri Aug 14 20:50:38 CEST 2026 ===
+15T26 CADICAL_EXIT=20 (atteso 20=UNSAT)
+=== 15T26 lrat-check Fri Aug 14 20:50:39 CEST 2026 ===
+15T26 LRATCHECK_EXIT=0
+c VERIFIED
+-rw-r--r--@ 1 simonealbanese  staff  3931976 Aug 14 20:50 results/cnf/15T26.lrat
+=== 15T9 solve Fri Aug 14 20:50:39 CEST 2026 ===
+15T9 CADICAL_EXIT=20 (atteso 20=UNSAT)
+=== 15T9 lrat-check Fri Aug 14 20:51:12 CEST 2026 ===
+15T9 LRATCHECK_EXIT=0
+c VERIFIED
+-rw-r--r--@ 1 simonealbanese  staff  54908848 Aug 14 20:51 results/cnf/15T9.lrat
+=== 15T5 solve Fri Aug 14 20:51:13 CEST 2026 ===
+15T5 CADICAL_EXIT=20 (atteso 20=UNSAT)
+=== 15T5 lrat-check Fri Aug 14 20:53:00 CEST 2026 ===
+15T5 LRATCHECK_EXIT=0
+c VERIFIED
+-rw-r--r--@ 1 simonealbanese  staff  162225707 Aug 14 20:53 results/cnf/15T5.lrat
+T9_CERTIFY_DONE Fri Aug 14 20:53:04 CEST 2026
