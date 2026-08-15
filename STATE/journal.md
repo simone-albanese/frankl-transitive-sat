@@ -317,3 +317,11 @@ rimosso prereserve_doi/imprint_publisher dal PUT -> 200 -> publish ok.
 Repo ciclico: DOI agganciato in Z15-RESOLVED.md e pushato. Token eliminato
 dallo scratchpad; CHIEDERE ALL'UTENTE DI REVOCARLO su zenodo.org.
 Restano (altra sessione, T9b): commit grado 15 + release/archivio suoi LRAT.
+
+## 2026-08-15 — T9b pubblicazione grado 15 COMPLETATA (sessione Z15)
+Commit 0f58000 (39 file: teorema, verbale, census, lemmi, cake_lpr 9/10,
+script, log) + README 0ddb264 (due teoremi, DOI Zenodo Z15, stato cake_lpr)
++ release v1.1.0 con 9 asset (3 coppie CNF+LRAT xz ~38 MB + manifesti
+SHA256). paper/ NON committato (decisioni umane: authorship, DOI, arXiv).
+Restano: eventuale Zenodo v2 del dataset transitive (serve token), revoca
+token Zenodo di stanotte, decisioni paper, sonda grado 16.
