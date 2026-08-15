@@ -325,3 +325,11 @@ script, log) + README 0ddb264 (due teoremi, DOI Zenodo Z15, stato cake_lpr)
 SHA256). paper/ NON committato (decisioni umane: authorship, DOI, arXiv).
 Restano: eventuale Zenodo v2 del dataset transitive (serve token), revoca
 token Zenodo di stanotte, decisioni paper, sonda grado 16.
+
+## 2026-08-15 — Zenodo v1.1.0 transitive + traduzione inglese COMPLETATE
+Zenodo v1.1.0 dataset transitive: DOI 10.5281/zenodo.21943855 (concept
+...21920979), 10 file (3 coppie CNF+LRAT xz + 3 manifesti + verbale).
+DOI agganciato in README e DEGREE15-CLOSED. Traduzione EN di 9 verbali/
+note nei due repo (commit 8ffb1b8 + f07bbd3), verificata su ancore hash/
+numeri e residui; diario STATE/ e CLAUDE.md restano IT (fonti primarie).
+Token eliminato; ricordare all'utente la revoca.

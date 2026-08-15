@@ -129,7 +129,10 @@ instances — 15T5 ($A_5$, 686 orbits), 15T9 ($[5^2]3$, 478) and 15T26
 ($[3^4]5$, 222) — all three decided UNSAT by CP-SAT + CaDiCaL with LRAT
 certificates verified, in **2 minutes 26 seconds total**. Statement:
 [docs/theorem-degree15.md](docs/theorem-degree15.md); record:
-[results/DEGREE15-CLOSED.md](results/DEGREE15-CLOSED.md). The degree-15
+[results/DEGREE15-CLOSED.md](results/DEGREE15-CLOSED.md); certificates in
+[release v1.1.0](https://github.com/simone-albanese/frankl-transitive-sat/releases/tag/v1.1.0)
+and archived at
+[doi:10.5281/zenodo.21943855](https://doi.org/10.5281/zenodo.21943855). The degree-15
 certificates (and the six from the margin-0 characterization) were
 additionally re-verified by **cake_lpr**, a checker whose correctness is a
 machine-checked theorem

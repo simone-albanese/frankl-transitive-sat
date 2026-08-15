@@ -88,4 +88,13 @@ for g in 15T5 15T9 15T26; do "$PY" sat_group.py $g decide 1200 3; done
   LRATs, release + new Zenodo version (publication decisions belong to
   the human; Zenodo requires a token).
 
+## Archival
+
+The three certificate pairs (CNF + LRAT, xz-compressed) with SHA-256
+manifests are published as
+[release v1.1.0](https://github.com/simone-albanese/frankl-transitive-sat/releases/tag/v1.1.0)
+and permanently archived on Zenodo as **v1.1.0** of this repository's
+dataset: [doi:10.5281/zenodo.21943855](https://doi.org/10.5281/zenodo.21943855)
+(concept DOI 10.5281/zenodo.21920979).
+
 *Originally written in Italian as the campaign's working record; translated to English on 15 Aug 2026 (the Italian original is preserved in git history).*
