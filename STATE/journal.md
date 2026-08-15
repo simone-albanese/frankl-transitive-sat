@@ -333,3 +333,13 @@ DOI agganciato in README e DEGREE15-CLOSED. Traduzione EN di 9 verbali/
 note nei due repo (commit 8ffb1b8 + f07bbd3), verificata su ancore hash/
 numeri e residui; diario STATE/ e CLAUDE.md restano IT (fonti primarie).
 Token eliminato; ricordare all'utente la revoca.
+
+## 2026-08-15 — CHIUSURA DEL PROGETTO (decisione del proprietario)
+Il proprietario dichiara CHIUSO il lavoro 13-15 e DECLINA il grado 16.
+Bilancio finale: ciclico 13/14/15 certificati; transitivo chiuso fino a
+15 punti (Cauchy + 5 istanze grado 14 + Z15 + 3 istanze grado 15);
+margine-0 caratterizzato; cake_lpr 9/10. Pubblicato: 2 repo EN coerenti,
+release v1.0.0/v1.1.0, Zenodo x4 (DOI 21900943, 21939129, 21920980,
+21943855). Aperti PER SCELTA: paper (bozza in paper/, decisioni umane),
+cake_lpr 10/10 (macchina 64 GB), grado 16 (lasciato ad altri, costi
+prezzati nel README). Il loop NON va riavviato.

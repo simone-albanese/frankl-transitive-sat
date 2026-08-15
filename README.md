@@ -241,8 +241,10 @@ for building the solver toolchain.
 ## What's next
 
 Degree 15 closed on 14 August 2026 — anchor (Z15) and superstructure (the
-three minimal groups) in a single day; see the theorem section above. What
-remains, honestly costed:
+three minimal groups) in a single day; see the theorem section above. **This
+project's own campaign ends here, by its owner's decision: the results from
+13 to 15 points are complete, certified and archived.** What remains open is
+left, honestly costed, to anyone who wants it:
 
 - **Degree 16** is the next rung, and it is steep: the cyclic anchor Z16 is
   estimated at weeks-to-months of solver time and ~314 GB of certificate on
