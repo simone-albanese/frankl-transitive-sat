@@ -2,11 +2,13 @@
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21920980.svg)](https://doi.org/10.5281/zenodo.21920980)
 
-**A computer-assisted theorem: no union-closed family that is symmetric under
-*any* transitive permutation group on 14 points violates Frankl's conjecture.
-The infinitely-many-groups problem is reduced, by three short lemmas and a
-certified computation, to five SAT instances — each decided by two independent
-exact methods, each carrying a machine-checkable proof certificate.**
+**Two computer-assisted theorems: no union-closed family that is symmetric
+under *any* transitive permutation group on 14 — or 15 — points violates
+Frankl's conjecture. The infinitely-many-groups problem is reduced, by short
+minimality lemmas and certified computation, to a handful of SAT instances —
+each decided by two independent exact methods, each carrying a
+machine-checkable proof certificate (LRAT/DRAT), most of them re-verified by a
+formally verified checker (cake_lpr).**
 
 This is the sequel to
 [frankl-cyclic-sat](https://github.com/simone-albanese/frankl-cyclic-sat),
@@ -110,6 +112,29 @@ The full statement, the proof chain and the validation protocol are in
 every measured number and re-verification commands is in
 [results/FOUND.md](results/FOUND.md) (Italian).
 
+> **Theorem (degree 15, added 14 Aug 2026).** Every non-trivial union-closed
+> family $F \subseteq \mathcal{P}([15])$ invariant under any transitive
+> permutation group $G \le S_{15}$ satisfies Frankl's conjecture.
+
+Degree 15 fell in two acts on the same day. First the anchor: the cyclic case
+Z15 — the predecessor's open problem 1, stopped at its 16 GB verification
+wall — was closed by rerunning CaDiCaL with **streaming-verifiable LRAT**
+output: UNSAT in 20 h 26 m, a 147 GB certificate verified in 22.6 minutes
+([results/Z15-CLOSED.md](results/Z15-CLOSED.md); certificate archived at
+[doi:10.5281/zenodo.21939129](https://doi.org/10.5281/zenodo.21939129)). That
+covers the 78 of 104 transitive groups of degree 15 containing a 15-cycle;
+the 26 without reduce, by the minimality lemmas
+([docs/notes-minimality-15.md](docs/notes-minimality-15.md)), to **three**
+instances — 15T5 ($A_5$, 686 orbits), 15T9 ($[5^2]3$, 478) and 15T26
+($[3^4]5$, 222) — all three decided UNSAT by CP-SAT + CaDiCaL with LRAT
+certificates verified, in **2 minutes 26 seconds total**. Statement:
+[docs/theorem-degree15.md](docs/theorem-degree15.md); record:
+[results/DEGREE15-CLOSED.md](results/DEGREE15-CLOSED.md). The degree-15
+certificates (and the six from the margin-0 characterization) were
+additionally re-verified by **cake_lpr**, a checker whose correctness is a
+machine-checked theorem
+([results/cakelpr-verification.md](results/cakelpr-verification.md)).
+
 ## The numbers
 
 Every instance was decided by **two independent exact methods**: Google's
@@ -211,13 +236,22 @@ for building the solver toolchain.
 
 ## What's next
 
-Degrees **15 and 16** are the natural next rungs, and they are open. Degree 15
-has a wrinkle the reader of the predecessor will recognize: the cyclic case
-Z15 itself is still unconfirmed (the predecessor's open problem 1, stopped at
-the 16 GB memory wall of the verification step), so the transitive story on 15
-points depends on completing that rung too. Exploratory work continues and is
-recorded, as always, in the working diary ([STATE/](STATE/)) before it is
-polished into documentation.
+Degree 15 closed on 14 August 2026 — anchor (Z15) and superstructure (the
+three minimal groups) in a single day; see the theorem section above. What
+remains, honestly costed:
+
+- **Degree 16** is the next rung, and it is steep: the cyclic anchor Z16 is
+  estimated at weeks-to-months of solver time and ~314 GB of certificate on
+  this class of hardware, and the census holds 1,954 transitive groups. The
+  predecessor's rule applies: probe before promising.
+- **One certificate short of a perfect formal record**: cake_lpr re-verified
+  9 of the project's 10 LRAT certificates; the 147 GB Z15 proof exhausted its
+  12 GB verified heap at ~85% (a resource limit of the checker, not a verdict
+  — Z15 remains lrat-check-verified). A 64 GB machine would finish the job;
+  routes in [results/cakelpr-verification.md](results/cakelpr-verification.md).
+
+Exploratory work continues and is recorded, as always, in the working diary
+([STATE/](STATE/)) before it is polished into documentation.
 
 ## How this was made
 
