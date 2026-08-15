@@ -343,3 +343,10 @@ release v1.0.0/v1.1.0, Zenodo x4 (DOI 21900943, 21939129, 21920980,
 21943855). Aperti PER SCELTA: paper (bozza in paper/, decisioni umane),
 cake_lpr 10/10 (macchina 64 GB), grado 16 (lasciato ad altri, costi
 prezzati nel README). Il loop NON va riavviato.
+
+## 2026-08-15 — Pulizia disco su richiesta del proprietario: +173 GB
+Eliminati (previa verifica md5 byte-identico con Zenodo per z15.lrat.xz):
+z15.lrat (147 GB), z15.lrat.xz (19 GB), z15min3/min4.cnf, originali 15T*
+non compressi, results/opb/ (5,8 GB Exact). Restano: xz grado 14 e 15,
+margin0/ (unica copia locale, rigenerabile), tutte le impronte. Cartella
+progetto: 5,8 GB. Disco: 317 GB liberi.
