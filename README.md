@@ -7,7 +7,9 @@ under *any* transitive permutation group on 14 or 15 points violates Frankl's
 conjecture. The infinitely-many-groups problem is reduced, by short minimality
 lemmas and certified computation, to a handful of SAT instances — each decided
 by two independent exact methods, each carrying a machine-checkable proof
-certificate, most re-verified by a formally verified checker.**
+certificate, most re-verified by a formally verified checker. Together with
+the predecessor's cyclic results and the degree-13 Cauchy corollary, the
+transitive case of Frankl's conjecture is closed up to 15 points.**
 
 This is the sequel to
 [frankl-cyclic-sat](https://github.com/simone-albanese/frankl-cyclic-sat),
